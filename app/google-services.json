@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "123167039771-8bktv70o2cde325q8si1g7m922phov21.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fridgepal",
+            "certificate_hash": "c524fb036409d45c89cd95e6d79f387741e89208"
+          }
+        },
+        {
           "client_id": "123167039771-d8ktghqqta2vj77f2rt7utsunfk8dfqr.apps.googleusercontent.com",
           "client_type": 3
         }
