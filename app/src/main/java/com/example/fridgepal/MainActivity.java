@@ -21,12 +21,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button button1=findViewById(R.id.button1);
-        Button button2=findViewById(R.id.button2);
-        Button button3=findViewById(R.id.button3);
-        Button button4=findViewById(R.id.button4);
-        Button button5=findViewById(R.id.button5);
-        Button button6=findViewById(R.id.button6);
+        Button button1=findViewById(R.id.freezer);
+        Button button2=findViewById(R.id.fridge);
+        Button button3=findViewById(R.id.pantry);
+        Button button4=findViewById(R.id.kitchen);
+        Button button5=findViewById(R.id.shoppinglist);
+        Button button6=findViewById(R.id.recipes);
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
@@ -40,23 +40,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
     switch (view.getId())
     {
-        case R.id.button1:
+        case R.id.freezer:
            opennext( Freezer.class);
             break;
-        case R.id.button2:
+        case R.id.fridge:
             opennext(Fridge.class);
            break;
-        case R.id.button3:
-            opennext(Freezer.class);
+        case R.id.pantry:
+            opennext(Pantry.class);
             break;
-        case R.id.button4:
-            opennext(Freezer.class);
+        case R.id.kitchen:
+            opennext(MainActivity.class);
             break;
-        case R.id.button5:
-            opennext(Freezer.class);
+        case R.id.shoppinglist:
+            opennext(ShoppingList.class);
             break;
-        case R.id.button6:
-            opennext(Freezer.class);
+        case R.id.recipes:
+            opennext(Recipes.class);
             break;
     }
     }
