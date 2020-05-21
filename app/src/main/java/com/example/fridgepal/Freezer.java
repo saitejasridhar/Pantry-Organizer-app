@@ -38,7 +38,7 @@ public class Freezer extends AppCompatActivity {
    FirebaseRecyclerAdapter<Member,ViewHolder> firebaseRecylerAdapter=
             new FirebaseRecyclerAdapter<Member, ViewHolder>(
                     Member.class,
-                    R.layout.images,
+                    R.layout.image,
                     ViewHolder.class,
                     reference
 
