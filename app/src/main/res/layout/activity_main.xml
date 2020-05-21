@@ -24,8 +24,8 @@
             android:layout_weight="1"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:text="One"
-            android:onClick=""/>
+            android:text="One"></Button>
+<!--            android:onClick=""/>-->
 
         <Button
             android:id="@+id/button2"

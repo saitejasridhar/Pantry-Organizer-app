@@ -3,14 +3,11 @@ package com.example.fridgepal;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -44,23 +41,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     switch (view.getId())
     {
         case R.id.button1:
-        Toast.makeText(MainActivity.this, "Button 1 clicked", Toast.LENGTH_SHORT).show();
+           opennext( Freezer.class);
             break;
         case R.id.button2:
-            Toast.makeText(MainActivity.this, "Button 2 clicked", Toast.LENGTH_SHORT).show();
-            break;
+            opennext(Fridge.class);
+           break;
         case R.id.button3:
-            Toast.makeText(MainActivity.this, "Button 3 clicked", Toast.LENGTH_SHORT).show();
+            opennext(Freezer.class);
             break;
         case R.id.button4:
-            Toast.makeText(MainActivity.this, "Button 4 clicked", Toast.LENGTH_SHORT).show();
+            opennext(Freezer.class);
             break;
         case R.id.button5:
-            Toast.makeText(MainActivity.this, "Button 5 clicked", Toast.LENGTH_SHORT).show();
+            opennext(Freezer.class);
             break;
         case R.id.button6:
-            Toast.makeText(MainActivity.this, "Button 6 clicked", Toast.LENGTH_SHORT).show();
+            opennext(Freezer.class);
             break;
     }
+    }
+
+    private void opennext( final Class<? extends Activity> ActivityToOpen)
+    {
+        startActivity(new Intent(getBaseContext(), ActivityToOpen));
     }
 }
