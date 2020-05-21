@@ -19,7 +19,7 @@
         <Button
             android:id="@+id/freezer"
             android:layout_width="match_parent"
-            android:layout_height="290dp"
+            android:layout_height="350dp"
             android:layout_marginTop="70dp"
             android:layout_weight="1"
             android:layout_marginRight="10dp"
@@ -29,16 +29,17 @@
         <Button
             android:id="@+id/fridge"
             android:layout_width="match_parent"
-            android:layout_height="290dp"
+            android:layout_height="350dp"
             android:layout_marginTop="70dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:text="Fridge" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layout2"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="420dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal" >
@@ -46,7 +47,7 @@
         <Button
             android:id="@+id/pantry"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:layout_marginRight="10dp"
@@ -57,7 +58,7 @@
 
     <LinearLayout
         android:id="@+id/layout3"
-        android:layout_marginTop="540dp"
+        android:layout_marginTop="620dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal" >
