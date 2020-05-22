@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.d("sati is a dog","abhi is a little bitch");
             break;
         case R.id.fridge:
-            opennext(activity_load_image.class);
+            opennext(Fridge.class);
            break;
         case R.id.pantry:
             opennext(Pantry.class);

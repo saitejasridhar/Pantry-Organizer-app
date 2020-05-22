@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity_load_image"></activity>
         <activity android:name=".ShoppingList" />
         <activity android:name=".Recipes" />
         <activity android:name=".Pantry" />
