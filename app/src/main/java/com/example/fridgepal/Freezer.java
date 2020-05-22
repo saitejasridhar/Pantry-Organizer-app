@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -29,27 +30,33 @@ public class Freezer extends AppCompatActivity {
 
         firebaseDatabase=FirebaseDatabase.getInstance();
         reference=firebaseDatabase.getReference("Fruits");
+
     }
 
     @Override
-    protected void onStart()
-    {
-    super.onStart();
-   FirebaseRecyclerAdapter<Member,ViewHolder> firebaseRecylerAdapter=
-            new FirebaseRecyclerAdapter<Member, ViewHolder>(
-                    Member.class,
-                    R.layout.image,
-                    ViewHolder.class,
-                    reference
+    protected void onStart() {
+       super.onStart();
+        Log.v("hello","helle");
+        FirebaseRecyclerAdapter<Member, ViewHolder> firebaseRecylerAdapter =
+                new FirebaseRecyclerAdapter<Member, ViewHolder>(
+                        Member.class,
+                        R.layout.image,
+                        ViewHolder.class,
+                        reference
 
-            ) {
-                @Override
-                protected void populateViewHolder(ViewHolder viewHolder, Member member, int i) {
+                )
+                {
+                    @Override
+                    protected void populateViewHolder(ViewHolder viewHolder, Member member, int i) {
 
-                    viewHolder.setdetails(getApplicationContext(),member.getTitle(),member.getImage());
-                }
+                        viewHolder.setdetails(getApplicationContext(), member.getTitle(), member.getImage());
 
-            };
-   mRecyclerView.setAdapter(firebaseRecylerAdapter);
+
+                    }
+
+                };
+        mRecyclerView.setAdapter(firebaseRecylerAdapter);
+
     }
+
 }

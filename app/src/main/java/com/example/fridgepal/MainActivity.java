@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -42,9 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         case R.id.freezer:
            opennext( Freezer.class);
+            Log.d("sati is a dog","abhi is a little bitch");
             break;
         case R.id.fridge:
-            opennext(Fridge.class);
+            opennext(activity_load_image.class);
            break;
         case R.id.pantry:
             opennext(Pantry.class);
