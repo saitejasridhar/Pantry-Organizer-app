@@ -15,7 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-public class Pantry extends AppCompatActivity {
+public class vegetables extends AppCompatActivity {
 
     private RecyclerView mBlogList;
     private DatabaseReference mDatabase;
@@ -23,11 +23,11 @@ public class Pantry extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pantry);
-        mDatabase= FirebaseDatabase.getInstance().getReference().child("Fruits");
+        setContentView(R.layout.activity_vegetables);
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("Vegetables");
         mDatabase.keepSynced(true);
 
-        mBlogList=(RecyclerView)findViewById(R.id.pantryrecycleview);
+        mBlogList=(RecyclerView)findViewById(R.id.vegetablesrecycleview);
         mBlogList.setHasFixedSize(true);
         mBlogList.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -35,11 +35,11 @@ public class Pantry extends AppCompatActivity {
     protected void onStart()
     {
         super.onStart();
-        FirebaseRecyclerAdapter<Blog,BlogViewHolder>firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, BlogViewHolder>
-                (Blog.class,R.layout.blog_row,BlogViewHolder.class,mDatabase )
+        FirebaseRecyclerAdapter<Blog, vegetables.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, vegetables.BlogViewHolder>
+                (Blog.class,R.layout.blog_row, vegetables.BlogViewHolder.class,mDatabase )
         {
             @Override
-            protected void populateViewHolder(BlogViewHolder blogViewHolder, Blog blog, int i) {
+            protected void populateViewHolder(vegetables.BlogViewHolder blogViewHolder, Blog blog, int i) {
                 blogViewHolder.setTitle(blog.getTitle());
                 blogViewHolder.setDesc(blog.getDesc());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
@@ -69,7 +69,7 @@ public class Pantry extends AppCompatActivity {
             TextView post_desc=(TextView)mView.findViewById(R.id.post_desc);
             post_desc.setText(desc);
         }
-        public void setImage(Context ctx,String image)
+        public void setImage(Context ctx, String image)
         {
             ImageView post_Image=(ImageView)mView.findViewById(R.id.post_image);
             Picasso.get().load(image).into(post_Image);

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         case R.id.freezer:
            opennext( Freezer.class);
-            Log.d("sati is a dog","abhi is a little bitch");
+
             break;
         case R.id.fridge:
             opennext(Fridge.class);
