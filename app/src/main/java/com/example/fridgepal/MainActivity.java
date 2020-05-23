@@ -42,14 +42,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     switch (view.getId())
     {
         case R.id.freezer:
-           opennext( Freezer.class);
+           opennext( items_in_freezer.class);
 
             break;
         case R.id.fridge:
-            opennext(Fridge.class);
+            opennext(items_in_fridge.class);
            break;
         case R.id.pantry:
-            opennext(Pantry.class);
+            opennext(items_in_pantry.class);
             break;
         case R.id.kitchen:
             opennext(MainActivity.class);

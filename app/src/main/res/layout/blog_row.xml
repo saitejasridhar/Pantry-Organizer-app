@@ -71,17 +71,28 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
-                    <TextView
-                        android:layout_below="@+id/post_title"
-                        android:layout_toRightOf="@+id/post_image"
+                    <EditText
+                        android:hint="Enter the quantity"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="20dp"
-                        android:id="@+id/post_desc"
-                        android:layout_marginTop="12dp"
-                        android:textColor="#7F7F7F"
-                        android:textSize="14dp"
-                        android:text="Bathroom"
+                        android:layout_toRightOf="@+id/post_image"
+                        android:layout_below="@+id/post_title"
+                        android:layout_marginRight="100dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:id="@+id/post_enterQuantity"></EditText>
+
+                    <Button
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/post_title"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/Bt_add"
+                        android:text="ADD"
+                        android:textSize="8sp"></Button>
+
 
                 </RelativeLayout>
 
@@ -89,10 +100,7 @@
             </androidx.cardview.widget.CardView>
 
 
-
         </GridLayout>
-
-
 
 
     </LinearLayout>

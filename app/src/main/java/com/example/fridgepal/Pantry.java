@@ -41,7 +41,7 @@ public class Pantry extends AppCompatActivity {
             @Override
             protected void populateViewHolder(BlogViewHolder blogViewHolder, Blog blog, int i) {
                 blogViewHolder.setTitle(blog.getTitle());
-                blogViewHolder.setDesc(blog.getDesc());
+//                blogViewHolder.setDesc(blog.getDesc());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
 
             }
@@ -64,11 +64,11 @@ public class Pantry extends AppCompatActivity {
             TextView post_title=(TextView)mView.findViewById(R.id.post_title);
             post_title.setText(title);
         }
-        public void setDesc(String desc)
-        {
-            TextView post_desc=(TextView)mView.findViewById(R.id.post_desc);
-            post_desc.setText(desc);
-        }
+//        public void setDesc(String desc)
+//        {
+//            TextView post_desc=(TextView)mView.findViewById(R.id.post_desc);
+//            post_desc.setText(desc);
+//        }
         public void setImage(Context ctx,String image)
         {
             ImageView post_Image=(ImageView)mView.findViewById(R.id.post_image);
