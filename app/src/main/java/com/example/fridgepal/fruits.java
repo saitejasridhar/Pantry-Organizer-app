@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -43,6 +45,15 @@ public class fruits extends AppCompatActivity {
 //                blogViewHolder.setDesc(blog.getDesc());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
 
+                blogViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(fruits.this,"Added",Toast.LENGTH_LONG).show();
+
+                    }
+                });
+
+
             }
         };
         mBlogList.setAdapter(firebaseRecyclerAdapter);
@@ -75,4 +86,5 @@ public class fruits extends AppCompatActivity {
         }
 
     }
+
 }

@@ -43,6 +43,7 @@ public class dairy extends AppCompatActivity {
 //                blogViewHolder.setDesc(blog.getDesc());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
 
+
             }
         };
         mBlogList.setAdapter(firebaseRecyclerAdapter);

@@ -2,7 +2,7 @@
 
 
 
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -23,10 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
-            android:layout_marginTop="10dp">
-
-
-        </RelativeLayout>
+            android:layout_marginTop="10dp"/>
 
         <GridLayout
             android:layout_width="match_parent"
@@ -56,6 +53,7 @@
                     <ImageView
                         android:layout_marginLeft="5dp"
                         android:layout_width="75dp"
+                        android:clickable="true"
                         android:layout_height="75dp"
                         android:id="@+id/post_image"/>
 
@@ -65,33 +63,21 @@
                         android:layout_marginLeft="20dp"
                         android:id="@+id/post_title"
                         android:layout_marginTop="3dp"
+                        android:clickable="true"
                         android:textColor="#FFFFFF"
                         android:textSize="18dp"
                         android:text="Bathroom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
-                    <EditText
-                        android:hint="Enter the quantity"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_toRightOf="@+id/post_image"
-                        android:layout_below="@+id/post_title"
-                        android:layout_marginRight="100dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:id="@+id/post_enterQuantity"></EditText>
-
                     <Button
+                        android:id="@+id/add"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/post_title"
-                        android:layout_marginLeft="110dp"
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/Bt_add"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="200dp"
+                        android:layout_toRightOf="@+id/post_image"
                         android:text="ADD"
-                        android:textSize="8sp"></Button>
+                        android:textSize="10dp" />
 
 
                 </RelativeLayout>
@@ -101,12 +87,7 @@
 
 
         </GridLayout>
-
-
     </LinearLayout>
-
-
-
-</ScrollView>
+</RelativeLayout>
 
 
