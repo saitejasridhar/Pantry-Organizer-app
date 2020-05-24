@@ -1,5 +1,6 @@
 package com.example.fridgepal;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,16 +8,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.ViewHolder;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class vegetables extends AppCompatActivity {
 
@@ -44,19 +55,50 @@ public class vegetables extends AppCompatActivity {
         FirebaseRecyclerAdapter<Blog, vegetables.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, vegetables.BlogViewHolder>
                 (Blog.class,R.layout.blog_row, vegetables.BlogViewHolder.class,mDatabase )
         {
+
             @Override
             public void populateViewHolder(vegetables.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
 
                 blogViewHolder.setTitle(blog.getTitle());
 //              blogViewHolder.setDesc(blog.getDesc());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
+
                 blogViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        final DialogPlus dialog = DialogPlus.newDialog(vegetables.this)
+                                .setGravity(Gravity.CENTER)
+                                .setMargin(50,0,50,0)
+                                .setContentHolder(new ViewHolder(R.layout.content))
+                                .setExpanded(false)
+                                .create();
+                        dialog.show();
 
-                        DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("Vegetables");
-                        databaseReference.child(getRef(i).getKey()).child("desc").setValue("1");
-                        Log.i("Fuck","Fuckkkk");
+                        View holderView = (LinearLayout)dialog.getHolderView();
+
+                         final EditText title = holderView.findViewById(R.id.quantity);
+                        Button button=holderView.findViewById(R.id.diaadd);
+
+                        button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+//                                Map<String,Object> map = new HashMap<>();
+//                                map.put("title",title.getText().toString());
+                                int map= Integer.parseInt(title.getText().toString());
+
+
+                                FirebaseDatabase.getInstance().getReference().child("Vegetables").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        dialog.dismiss();
+                                    }
+                                });
+
+                                Toast.makeText(vegetables.this,"Item added",Toast.LENGTH_LONG).show();
+                            }
+                        });
+
 
                     }
                 });

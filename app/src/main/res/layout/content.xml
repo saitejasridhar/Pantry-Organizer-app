@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#0C0C0C">
+
+    <TextView
+        android:background="#FF1A1A1A"
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Enter Quantity"
+        android:textSize="18dp"
+        android:textColor="#FFFFFF"
+       />
+
+    <EditText
+        android:layout_margin="10dp"
+        android:id="@+id/quantity"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Enter Quantity"
+        android:textSize="18dp"
+        android:background="#747070"
+        android:textColor="#B7A8A8"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/diaadd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#FF1A1A1A"
+        android:text="ADD"
+        android:clickable="true"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp" />
+
+</LinearLayout>
