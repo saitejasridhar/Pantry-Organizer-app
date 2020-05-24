@@ -64,7 +64,7 @@ public class dairy extends AppCompatActivity {
             TextView post_title=(TextView)mView.findViewById(R.id.post_title);
             post_title.setText(title);
         }
-//        public void setDesc(String desc)
+        //        public void setDesc(String desc)
 //        {
 //            TextView post_desc=(TextView)mView.findViewById(R.id.post_desc);
 //            post_desc.setText(desc);

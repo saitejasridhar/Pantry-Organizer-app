@@ -34,9 +34,9 @@ public class Blog {
     public void setImage(String image) {
         this.image = image;
     }
-public Blog()
-{
+    public Blog()
+    {
 
-}
+    }
 
 }

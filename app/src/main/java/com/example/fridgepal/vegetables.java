@@ -45,16 +45,19 @@ public class vegetables extends AppCompatActivity {
                 (Blog.class,R.layout.blog_row, vegetables.BlogViewHolder.class,mDatabase )
         {
             @Override
-            protected void populateViewHolder(vegetables.BlogViewHolder blogViewHolder, Blog blog, int i) {
-                blogViewHolder.setTitle(blog.getTitle());
-//                blogViewHolder.setDesc(blog.getDesc());
-                blogViewHolder.setImage(getApplicationContext(),blog.getImage());
+            public void populateViewHolder(vegetables.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
 
+                blogViewHolder.setTitle(blog.getTitle());
+//              blogViewHolder.setDesc(blog.getDesc());
+                blogViewHolder.setImage(getApplicationContext(),blog.getImage());
                 blogViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
-                        Toast.makeText(vegetables.this,"Item Added",Toast.LENGTH_LONG).show();
+                        DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("Vegetables");
+                        databaseReference.child(getRef(i).getKey()).child("desc").setValue("1");
+                        Log.i("Fuck","Fuckkkk");
+
                     }
                 });
             }
@@ -69,6 +72,7 @@ public class vegetables extends AppCompatActivity {
         Button add;
 
 
+
         public BlogViewHolder(View itemView)
         {
             super(itemView);
@@ -78,18 +82,18 @@ public class vegetables extends AppCompatActivity {
             add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                  Log.i("testtttt","trrf");
+
                 }
             });
 
         }
 
-        public void setTitle(String title)
-        {
-            TextView post_title=(TextView)mView.findViewById(R.id.post_title);
-            post_title.setText(title);
+        public void setTitle(String title) {
+
+                TextView post_title = (TextView) mView.findViewById(R.id.post_title);
+                post_title.setText(title);
         }
-//        public void setDesc(String desc)
+        //        public void setDesc(String desc)
 //        {
 //            TextView post_desc=(TextView)mView.findViewById(R.id.post_desc);
 //            post_desc.setText(desc);
