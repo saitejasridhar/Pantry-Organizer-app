@@ -87,7 +87,7 @@ public class vegetables extends AppCompatActivity {
 //                                map.put("title",title.getText().toString());
                                 int map= Integer.parseInt(title.getText().toString());
 
-
+                                FirebaseDatabase.getInstance().getReference().child("Vegetables").child(getRef(i).getKey()).child("desc").setValue("1");
                                 FirebaseDatabase.getInstance().getReference().child("Vegetables").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
