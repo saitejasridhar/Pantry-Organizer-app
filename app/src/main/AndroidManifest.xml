@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".Recipes"></activity>
+        <activity android:name=".mainview" />
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".items_in_pantry" />
         <activity android:name=".items_in_freezer" />
         <activity android:name=".items_in_fridge" />
@@ -17,7 +19,6 @@
         <activity android:name=".fruits" />
         <activity android:name=".vegetables" />
         <activity android:name=".ShoppingList" />
-        <activity android:name=".Recipes" />
         <activity android:name=".Pantry" />
         <activity android:name=".Fridge" />
         <activity android:name=".Freezer" />

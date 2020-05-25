@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.DoubleBounce;
+import com.github.ybq.android.spinkit.style.Wave;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -19,19 +22,29 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ProgressBar progressBar;
+    public ProgressBar PBar;
     EditText editTextEmail, editTextPassword;
 
     private FirebaseAuth mAuth;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        PBar = (ProgressBar)findViewById(R.id.spin_kit);
+        Wave new_wave = new Wave();
+        PBar.setIndeterminateDrawable(new_wave);
+        PBar.setVisibility(View.INVISIBLE);
+
+
+
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -67,15 +80,28 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
+
+
+
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                progressBar.setVisibility(View.GONE);
+             PBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    finish();
-                    startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                    mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful())
+                            {
+                                Toast.makeText(getApplicationContext(),"Registration Successful Please Verify mail and log in",Toast.LENGTH_LONG).show();
+
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
                 } else {
 
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
@@ -95,7 +121,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonSignUp:
+                PBar.setVisibility(View.VISIBLE);
+                startActivity(new Intent(SignUpActivity.this, MainActivity.class));
                 registerUser();
+
+
                 break;
 
             case R.id.textViewLogin:

@@ -1,99 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-
-<include
-    android:id="@+id/toolbar"
-    layout="@layout/toolbar1" />
-
-    <LinearLayout
-        android:id="@+id/layout1"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" >
+        android:layout_height="wrap_content"
+        android:background="#000"
+        android:layout_weight="1">
 
-        <Button
-            android:id="@+id/freezer"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_marginTop="70dp"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="Freezer"/>
+        <ImageView
+            android:layout_width="512px"
+            android:layout_height="512px"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/refrigerator" />
 
-        <Button
-            android:id="@+id/fridge"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="Fridge" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/layout2"
-        android:layout_marginTop="420dp"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" >
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#000000">
 
-        <Button
-            android:id="@+id/pantry"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="Pantry" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout3"
-        android:layout_marginTop="620dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/kitchen"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="2"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="Kitchen" />
-
-        <Button
-            android:id="@+id/shoppinglist"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="2"
-            android:text="Logout" />
-        <Button
-            android:id="@+id/recipes"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="2"
-            android:text="Login" />
-    </LinearLayout>
-</RelativeLayout>
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
 
 
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:hint="email"
+                android:inputType="textEmailAddress"
+                android:paddingBottom="15dp"
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:paddingBottom="15dp"
+                android:textColorHint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/buttonLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="7dp"
+                android:text="Login"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/textViewSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="Don't have account? Sign Up"
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="#FFFFFF"
+                android:gravity="center_horizontal" />
 
 
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+</LinearLayout>
