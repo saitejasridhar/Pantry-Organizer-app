@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 PBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     if(mAuth.getCurrentUser().isEmailVerified()) {
-                        finish();
+
                         Intent intent = new Intent(MainActivity.this, mainview.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
@@ -100,6 +100,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStart() {
         super.onStart();
 
+        if (mAuth.getCurrentUser().isEmailVerified()) {
+            finish();
+            startActivity(new Intent(MainActivity.this, mainview.class));
+        }
 
     }
 
@@ -107,8 +111,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.textViewSignup:
-
-
                 startActivity(new Intent(this, SignUpActivity.class));
                 break;
 
