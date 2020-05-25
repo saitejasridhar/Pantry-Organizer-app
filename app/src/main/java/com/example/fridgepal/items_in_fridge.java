@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -27,12 +29,16 @@ public class items_in_fridge extends AppCompatActivity {
 
     private RecyclerView mBlogList;
     private DatabaseReference mDatabase;
+    FirebaseUser user;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
-
+        user= FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        uid=user.getUid();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_in_fridge);
@@ -43,7 +49,7 @@ public class items_in_fridge extends AppCompatActivity {
             opennext();
             }
         });
-        mDatabase= FirebaseDatabase.getInstance().getReference().child("Fridge");
+        mDatabase= FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge");
         mDatabase.keepSynced(true);
 
         mBlogList=(RecyclerView)findViewById(R.id.itemsfridgerecycleview);
@@ -71,7 +77,7 @@ public class items_in_fridge extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         FirebaseDatabase.getInstance().getReference()
-                                .child("Fridge")
+                                .child(uid).child("Fridge")
                                 .child(getRef(i).getKey())
                                 .removeValue();
                     }

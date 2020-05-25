@@ -81,7 +81,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="2"
-            android:text="ShopList" />
+            android:text="Logout" />
         <Button
             android:id="@+id/recipes"
             android:layout_width="80dp"
@@ -90,7 +90,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="2"
-            android:text="Recipes" />
+            android:text="Login" />
     </LinearLayout>
 </RelativeLayout>
 

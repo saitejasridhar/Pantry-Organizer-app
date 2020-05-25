@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.orhanobut.dialogplus.DialogPlus;
@@ -34,8 +36,16 @@ public class vegetables extends AppCompatActivity {
     private RecyclerView mBlogList;
     private DatabaseReference mDatabase;
 
+    FirebaseUser user;
+    String uid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        user= FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        uid=user.getUid();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vegetables);
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Vegetables");
@@ -86,10 +96,10 @@ public class vegetables extends AppCompatActivity {
 
                                 int map= Integer.parseInt(title.getText().toString());
 
-                                FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
-                                FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
-                                FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
-                                FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         dialog.dismiss();

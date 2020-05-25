@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -56,7 +59,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             opennext(MainActivity.class);
             break;
         case R.id.shoppinglist:
-            opennext(ShoppingList.class);
+        {
+            FirebaseAuth.getInstance().signOut();
+            finish();
+            Toast.makeText(MainActivity.this,"Logged out",Toast.LENGTH_LONG).show();
+        }
+
             break;
         case R.id.recipes:
             opennext(Recipes.class);
