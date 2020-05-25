@@ -1,3 +1,4 @@
+
 package com.example.fridgepal;
 
 import androidx.annotation.NonNull;
@@ -88,7 +89,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-             PBar.setVisibility(View.GONE);
+                PBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -124,13 +125,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.buttonSignUp:
                 PBar.setVisibility(View.VISIBLE);
                 Handler handler=new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        startActivity(new Intent(SignUpActivity.this, MainActivity.class));
-                        registerUser();
-                    }
-                },3000);
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                                registerUser();
+                            }
+                        },3000);
+
+
+
                 break;
 
             case R.id.textViewLogin:
