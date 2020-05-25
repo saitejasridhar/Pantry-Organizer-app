@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -122,10 +123,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()) {
             case R.id.buttonSignUp:
                 PBar.setVisibility(View.VISIBLE);
-                startActivity(new Intent(SignUpActivity.this, MainActivity.class));
-                registerUser();
-
-
+                Handler handler=new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                        registerUser();
+                    }
+                },3000);
                 break;
 
             case R.id.textViewLogin:

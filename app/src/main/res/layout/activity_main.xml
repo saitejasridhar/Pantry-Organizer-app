@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000"
     android:orientation="vertical"
     tools:context=".MainActivity">
     <RelativeLayout
@@ -20,6 +21,16 @@
             android:background="@drawable/refrigerator" />
 
     </RelativeLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/spin_kit1"
+        android:visibility="invisible"
+        style="@style/SpinKitView.Large.Wave"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        app:SpinKit_Color="#FF9800" />
 
 
     <RelativeLayout
