@@ -83,17 +83,13 @@ public class vegetables extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
 
-//                                Map<String,Object> map = new HashMap<>();
-//                                map.put("title",title.getText().toString());
+
                                 int map= Integer.parseInt(title.getText().toString());
 
-                                FirebaseDatabase.getInstance().getReference().child("Vegetables").child(getRef(i).getKey()).child("desc").setValue("1");
                                 FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
                                 FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
                                 FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
-                                FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map);
-
-                                FirebaseDatabase.getInstance().getReference().child("Vegetables").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         dialog.dismiss();
@@ -137,8 +133,8 @@ public class vegetables extends AppCompatActivity {
 
         public void setTitle(String title) {
 
-                TextView post_title = (TextView) mView.findViewById(R.id.post_title);
-                post_title.setText(title);
+            TextView post_title = (TextView) mView.findViewById(R.id.post_title);
+            post_title.setText(title);
         }
         public void setImage(Context ctx, String image)
         {
@@ -147,4 +143,5 @@ public class vegetables extends AppCompatActivity {
         }
 
     }
-}
+};
+
