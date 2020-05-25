@@ -88,6 +88,11 @@ public class vegetables extends AppCompatActivity {
                                 int map= Integer.parseInt(title.getText().toString());
 
                                 FirebaseDatabase.getInstance().getReference().child("Vegetables").child(getRef(i).getKey()).child("desc").setValue("1");
+                                FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
+                                FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
+                                FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
+                                FirebaseDatabase.getInstance().getReference().child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map);
+
                                 FirebaseDatabase.getInstance().getReference().child("Vegetables").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -135,11 +140,6 @@ public class vegetables extends AppCompatActivity {
                 TextView post_title = (TextView) mView.findViewById(R.id.post_title);
                 post_title.setText(title);
         }
-        //        public void setDesc(String desc)
-//        {
-//            TextView post_desc=(TextView)mView.findViewById(R.id.post_desc);
-//            post_desc.setText(desc);
-//        }
         public void setImage(Context ctx, String image)
         {
             ImageView post_Image=(ImageView)mView.findViewById(R.id.post_image);

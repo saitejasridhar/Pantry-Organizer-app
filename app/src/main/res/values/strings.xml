@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Fridge Pal</string>
+
+    <string name="items_in_fridge">Items in Fridge</string>
 </resources>

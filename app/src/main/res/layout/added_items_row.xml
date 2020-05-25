@@ -55,13 +55,13 @@
                         android:layout_width="75dp"
                         android:clickable="true"
                         android:layout_height="75dp"
-                        android:id="@+id/post_image"/>
+                        android:id="@+id/added_image"/>
 
 
                     <TextView
-                        android:layout_toRightOf="@+id/post_image"
+                        android:layout_toRightOf="@+id/added_image"
                         android:layout_marginLeft="20dp"
-                        android:id="@+id/post_title"
+                        android:id="@+id/added_title"
                         android:layout_marginTop="3dp"
                         android:clickable="true"
                         android:textColor="#FFFFFF"
@@ -73,31 +73,22 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/post_title"
+                        android:layout_below="@+id/added_title"
                         android:layout_marginTop="10dp"
-                        android:text=""
-                        android:layout_toRightOf="@+id/post_image"
+                        android:text="KGS"
+                        android:layout_toRightOf="@+id/added_image"
                         android:layout_marginLeft="20dp"
-                        android:id="@+id/post_kgs"
+                        android:id="@+id/added_kgs"
                         />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/post_desc"
-                        android:layout_toRightOf="@+id/post_kgs"
-                        android:layout_below="@+id/post_title"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"/>
 
-
-                    <Button
-                        android:id="@+id/add"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:layout_marginLeft="200dp"
-                        android:layout_toRightOf="@+id/post_image"
-                        android:text="ADD"
-                        android:textSize="10dp" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/delete"
+                        android:layout_toRightOf="@+id/added_image"
+                        android:layout_marginLeft="230dp"
+                        android:src="@drawable/delete"
+                        android:textSize="10dp"/>
 
 
                 </RelativeLayout>

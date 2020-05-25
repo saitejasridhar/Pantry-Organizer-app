@@ -4,22 +4,22 @@ public class Blog {
     private String title;
     private String desc;
     private String image;
-    private int qunatity;
+    private int quantity;
 
     public Blog(String title, String desc, String image,int qunatity) {
         this.title = title;
         this.desc = desc;
         this.image = image;
-        this.qunatity=qunatity;
+        this.quantity =qunatity;
 
     }
 
-    public int getQunatity() {
-        return qunatity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQunatity(int qunatity) {
-        this.qunatity = qunatity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getTitle() {

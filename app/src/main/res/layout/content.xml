@@ -25,6 +25,7 @@
         android:textSize="18dp"
         android:background="#747070"
         android:textColor="#B7A8A8"
+        android:inputType="number"
         android:textStyle="bold"/>
 
     <Button
