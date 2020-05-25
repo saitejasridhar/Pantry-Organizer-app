@@ -61,9 +61,9 @@ public class mainview extends AppCompatActivity implements View.OnClickListener 
             case R.id.shoppinglist:
             {
                 FirebaseAuth.getInstance().signOut();
-                finish();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 Toast.makeText(mainview.this,"Logged out",Toast.LENGTH_LONG).show();
-                System.exit(0);
+
             }
 
             break;
