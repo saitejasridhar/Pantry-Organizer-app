@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".forgotpassword"></activity>
+        <activity android:name=".sauces"></activity>
+        <activity android:name=".bakery" />
+        <activity android:name=".meat" />
+        <activity android:name=".herbs" />
+        <activity android:name=".beverages" />
+        <activity android:name=".forgotpassword" />
         <activity android:name=".greens" />
         <activity android:name=".loginver" />
         <activity android:name=".Recipes" />
