@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,8 @@ public class items_in_fridge extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
 
 
         user= FirebaseAuth.getInstance().getCurrentUser();
@@ -64,18 +67,21 @@ public class items_in_fridge extends AppCompatActivity {
         setSupportActionBar(TbFridge);
         getSupportActionBar().setTitle("Fridge");
         super.onStart();
+        final MediaPlayer delete=MediaPlayer.create(items_in_fridge.this,R.raw.delete_sound);
 
         FirebaseRecyclerAdapter<Blog, items_in_fridge.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, items_in_fridge.BlogViewHolder>
                 (Blog.class,R.layout.added_items_row, items_in_fridge.BlogViewHolder.class,mDatabase )
         {
             @Override
             protected void populateViewHolder(items_in_fridge.BlogViewHolder blogViewHolder, Blog blog,final int i) {
+
                 blogViewHolder.setTitle(blog.getTitle());
                 blogViewHolder.setQuantity(blog.getQuantity());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
                 blogViewHolder.delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        delete.start();
                         FirebaseDatabase.getInstance().getReference()
                                 .child(uid).child("Fridge")
                                 .child(getRef(i).getKey())

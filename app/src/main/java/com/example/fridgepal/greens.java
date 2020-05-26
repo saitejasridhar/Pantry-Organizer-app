@@ -31,7 +31,7 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.Map;
 
-public class vegetables extends AppCompatActivity {
+public class greens extends AppCompatActivity {
 
     private RecyclerView mBlogList;
     private DatabaseReference mDatabase;
@@ -47,11 +47,11 @@ public class vegetables extends AppCompatActivity {
         uid=user.getUid();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vegetables);
-        mDatabase= FirebaseDatabase.getInstance().getReference().child("Vegetables");
+        setContentView(R.layout.activity_greens);
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("Greens");
         mDatabase.keepSynced(true);
 
-        mBlogList=(RecyclerView)findViewById(R.id.vegetablesrecycleview);
+        mBlogList=(RecyclerView)findViewById(R.id.greensrecycleview);
         mBlogList.setHasFixedSize(true);
         mBlogList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -62,12 +62,12 @@ public class vegetables extends AppCompatActivity {
     {
 
         super.onStart();
-        FirebaseRecyclerAdapter<Blog, vegetables.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, vegetables.BlogViewHolder>
-                (Blog.class,R.layout.blog_row, vegetables.BlogViewHolder.class,mDatabase )
+        FirebaseRecyclerAdapter<Blog, greens.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, greens.BlogViewHolder>
+                (Blog.class,R.layout.blog_row, greens.BlogViewHolder.class,mDatabase )
         {
 
             @Override
-            public void populateViewHolder(vegetables.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
+            public void populateViewHolder(greens.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
 
                 blogViewHolder.setTitle(blog.getTitle());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
@@ -75,7 +75,7 @@ public class vegetables extends AppCompatActivity {
                 blogViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final DialogPlus dialog = DialogPlus.newDialog(vegetables.this)
+                        final DialogPlus dialog = DialogPlus.newDialog(greens.this)
                                 .setGravity(Gravity.CENTER)
                                 .setMargin(50,0,50,0)
                                 .setContentHolder(new ViewHolder(R.layout.content))
@@ -105,7 +105,7 @@ public class vegetables extends AppCompatActivity {
                                     }
                                 });
 
-                                Toast.makeText(vegetables.this,"Item added",Toast.LENGTH_LONG).show();
+                                Toast.makeText(greens.this,"Item added",Toast.LENGTH_LONG).show();
                             }
                         });
 

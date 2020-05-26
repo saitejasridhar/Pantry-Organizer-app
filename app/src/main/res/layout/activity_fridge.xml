@@ -4,51 +4,344 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000"
     tools:context=".Fridge">
 
-    <LinearLayout
-        android:id="@+id/layout1"
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" >
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="125dp"
+        android:layout_marginBottom="124dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="3"
+        android:columnOrderPreserved="false"
+        android:rowCount="3">
 
-        <Button
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="110dp"
+            android:layout_height="142dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
             android:id="@+id/fruits"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginTop="70dp"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="Fruits"/>
+            app:cardBackgroundColor="#242424"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp">
 
-        <Button
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <ImageView
+
+                    android:background="@drawable/fruits"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Fruits"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="113dp"
+            android:layout_height="142dp"
+            android:layout_margin="10dp"
             android:id="@+id/vegetables"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="Vegetables" />
-    </LinearLayout>
+            app:cardBackgroundColor="#242424"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp">
 
-    <LinearLayout
-        android:id="@+id/layout2"
-        android:layout_marginTop="470dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" >
+            <LinearLayout
 
-        <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <ImageView
+
+                    android:background="@drawable/vegetables"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:layout_width="113dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:textAlignment="center"
+                    android:text="Vegetables"
+                    android:textColor="#FFFFFF"
+                    android:textSize="17dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="110dp"
+            android:layout_height="142dp"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#242424"
+            app:cardCornerRadius="12dp"
             android:id="@+id/dairy"
-            android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="Dairy" />
+            app:cardElevation="6dp">
 
-    </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <ImageView
+                    android:background="@drawable/dairy"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Dairy"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="110dp"
+            android:layout_height="142dp"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#242424"
+            app:cardCornerRadius="12dp"
+            android:id="@+id/greens"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <ImageView
+
+                    android:background="@drawable/greens"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Greens"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="110dp"
+            android:layout_height="142dp"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#242424"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <ImageView
+
+                    android:background="@drawable/beverages"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:layout_width="113dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:textAlignment="center"
+                    android:text="Beverages"
+                    android:textColor="#FFFFFF"
+                    android:textSize="17dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="110dp"
+            android:layout_height="142dp"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#242424"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <ImageView
+
+                    android:background="@drawable/herbs"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Herbs"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="110dp"
+            android:layout_height="142dp"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#242424"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <ImageView
+
+                    android:background="@drawable/meat"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Meat"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="110dp"
+            android:layout_height="142dp"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#242424"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <ImageView
+
+                    android:background="@drawable/bakery"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Bakery"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="110dp"
+            android:layout_height="142dp"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#242424"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <ImageView
+                    android:background="@drawable/sauces"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Sauces"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </GridLayout>
 </RelativeLayout>
