@@ -95,7 +95,7 @@ public class fruits extends AppCompatActivity {
                             public void onClick(View view) {
 
 
-added.start();
+                                added.start();
                                 int map= Integer.parseInt(title.getText().toString());
 
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());

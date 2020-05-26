@@ -11,9 +11,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.ViewHolder;
 import com.squareup.picasso.Picasso;
 
 public class items_in_fridge extends AppCompatActivity {
@@ -73,11 +78,49 @@ public class items_in_fridge extends AppCompatActivity {
                 (Blog.class,R.layout.added_items_row, items_in_fridge.BlogViewHolder.class,mDatabase )
         {
             @Override
-            protected void populateViewHolder(items_in_fridge.BlogViewHolder blogViewHolder, Blog blog,final int i) {
+            protected void populateViewHolder(items_in_fridge.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
 
                 blogViewHolder.setTitle(blog.getTitle());
                 blogViewHolder.setQuantity(blog.getQuantity());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
+                blogViewHolder.update.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        final DialogPlus dialog = DialogPlus.newDialog(items_in_fridge.this)
+                                .setGravity(Gravity.CENTER)
+                                .setMargin(50,0,50,0)
+                                .setContentHolder(new ViewHolder(R.layout.content))
+                                .setExpanded(false)
+                                .create();
+                        dialog.show();
+
+                        View holderView = (LinearLayout)dialog.getHolderView();
+
+                        final EditText title = holderView.findViewById(R.id.quantity);
+                        Button button=holderView.findViewById(R.id.diaadd);
+
+                        button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                int map= Integer.parseInt(title.getText().toString());
+
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        dialog.dismiss();
+                                    }
+                                });
+
+                                Toast.makeText(items_in_fridge.this,"Updated Fridge",Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                    }
+                });
                 blogViewHolder.delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -99,12 +142,13 @@ public class items_in_fridge extends AppCompatActivity {
     {
         View mView;
         ImageView delete;
+        ImageView update;
         public BlogViewHolder(View itemView)
         {
             super(itemView);
             mView=itemView;
              delete = mView.findViewById(R.id.delete);
-
+            update = mView.findViewById(R.id.update);
         }
 
         public void setTitle(String title)
