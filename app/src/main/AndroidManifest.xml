@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Recipes"></activity>
+        <activity android:name=".loginver"></activity>
+        <activity android:name=".Recipes" />
         <activity android:name=".mainview" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".items_in_pantry" />

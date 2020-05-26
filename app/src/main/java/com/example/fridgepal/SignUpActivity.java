@@ -1,4 +1,3 @@
-
 package com.example.fridgepal;
 
 import androidx.annotation.NonNull;
@@ -125,13 +124,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.buttonSignUp:
                 PBar.setVisibility(View.VISIBLE);
                 Handler handler=new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                startActivity(new Intent(SignUpActivity.this, MainActivity.class));
-                                registerUser();
-                            }
-                        },3000);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                        registerUser();
+                    }
+                },3000);
 
 
 

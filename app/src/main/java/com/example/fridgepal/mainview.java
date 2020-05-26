@@ -62,7 +62,7 @@ public class mainview extends AppCompatActivity implements View.OnClickListener 
             {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                Toast.makeText(mainview.this,"Logged out",Toast.LENGTH_LONG).show();
+//                System.exit(0);
 
             }
 

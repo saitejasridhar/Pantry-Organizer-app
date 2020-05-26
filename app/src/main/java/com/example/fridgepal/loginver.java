@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class loginver extends AppCompatActivity implements View.OnClickListener {
 
 
     FirebaseAuth mAuth;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_loginver);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
 
-        findViewById(R.id.textViewSignup).setOnClickListener(this);
+
         findViewById(R.id.buttonLogin).setOnClickListener(this);
 
     }
@@ -75,7 +75,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     if(mAuth.getCurrentUser().isEmailVerified()) {
-                      startActivity(new Intent(getApplicationContext(),mainview.class));
+                        finish();
+                        Intent intent = new Intent(loginver.this, mainview.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                     }
                     else {
                         Toast.makeText(getApplicationContext(), "Please Verify your mail address", Toast.LENGTH_SHORT).show();
@@ -90,20 +93,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-        if(mAuth.getCurrentUser()!=null && mAuth.getCurrentUser().isEmailVerified())
-        {
-            startActivity(new Intent(getApplicationContext(),mainview.class));
-        }
+
 
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.textViewSignup:
-                finish();
-                startActivity(new Intent(this, SignUpActivity.class));
-                break;
 
             case R.id.buttonLogin:
                 userLogin();
