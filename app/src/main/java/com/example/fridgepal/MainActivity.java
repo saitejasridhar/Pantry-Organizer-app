@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText editTextEmail, editTextPassword;
     ProgressBar progressBar;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +37,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
 
+
         findViewById(R.id.textViewSignup).setOnClickListener(this);
         findViewById(R.id.buttonLogin).setOnClickListener(this);
+        findViewById(R.id.forgot).setOnClickListener(this);
+
 
     }
 
@@ -108,6 +114,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonLogin:
                 userLogin();
                 break;
+            case R.id.forgot:
+                startActivity(new Intent(MainActivity.this,forgotpassword.class));
         }
     }
 }
