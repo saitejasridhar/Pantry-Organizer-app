@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.widget.LinearLayout;
@@ -49,7 +50,6 @@ public class ShoppingList extends AppCompatActivity {
 
         GetDataFromFirebase();
 
-
     }
 
     @Override
@@ -88,9 +88,8 @@ public class ShoppingList extends AppCompatActivity {
                     messages.setName(snapshot.child("title").getValue().toString());
                     messagesList.add(messages);
                 }
-                recyclerAdapter=new RecyclerAdapter(getApplicationContext(),messagesList);
-                recyclerView.setAdapter(recyclerAdapter);
-                recyclerAdapter.notifyDataSetChanged();
+                RecyclerAdapter adapter=new RecyclerAdapter(getApplicationContext(),messagesList);
+                recyclerView.setAdapter(adapter);
             }
 
             @Override
@@ -129,4 +128,5 @@ public class ShoppingList extends AppCompatActivity {
          RecyclerAdapter adapter=new RecyclerAdapter(getApplicationContext(),mylist);
          recyclerView.setAdapter(adapter);
      }
+
 }
