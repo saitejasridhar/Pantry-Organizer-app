@@ -29,7 +29,7 @@ public class mainview extends AppCompatActivity implements View.OnClickListener 
         Button button1=findViewById(R.id.freezer);
         Button button2=findViewById(R.id.fridge);
         Button button3=findViewById(R.id.pantry);
-        Button button4=findViewById(R.id.kitchen);
+        Button button4=findViewById(R.id.list);
         Button button5=findViewById(R.id.shoppinglist);
         Button button6=findViewById(R.id.recipes);
 
@@ -55,8 +55,8 @@ public class mainview extends AppCompatActivity implements View.OnClickListener 
             case R.id.pantry:
                 opennext(items_in_pantry.class);
                 break;
-            case R.id.kitchen:
-                opennext(MainActivity.class);
+            case R.id.list:
+                opennext(items_in_list.class);
                 break;
             case R.id.shoppinglist:
             {

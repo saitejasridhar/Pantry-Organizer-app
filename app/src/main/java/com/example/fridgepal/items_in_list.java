@@ -31,7 +31,7 @@ import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 import com.squareup.picasso.Picasso;
 
-public class items_in_fridge extends AppCompatActivity {
+public class items_in_list extends AppCompatActivity {
 
     private RecyclerView mBlogList;
     private DatabaseReference mDatabase;
@@ -42,23 +42,25 @@ public class items_in_fridge extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
 
+
+
         user= FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         uid=user.getUid();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_items_in_fridge);
-        Button button1=findViewById(R.id.addfridge);
+        setContentView(R.layout.activity_items_in_list);
+        Button button1=findViewById(R.id.addlist);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            opennext();
+               startActivity(new Intent(getApplicationContext(),ShoppingList.class));
             }
         });
-        mDatabase= FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge");
+        mDatabase= FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List");
         mDatabase.keepSynced(true);
 
-        mBlogList=(RecyclerView)findViewById(R.id.itemsfridgerecycleview);
+        mBlogList=(RecyclerView)findViewById(R.id.itemslistrecycleview);
         mBlogList.setHasFixedSize(true);
         mBlogList.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -66,18 +68,17 @@ public class items_in_fridge extends AppCompatActivity {
     @Override
     protected void onStart()
     {
-        final MediaPlayer added=MediaPlayer.create(items_in_fridge.this,R.raw.added);
         Toolbar  TbFridge = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(TbFridge);
-        getSupportActionBar().setTitle("Fridge");
+        getSupportActionBar().setTitle("List");
         super.onStart();
-        final MediaPlayer delete=MediaPlayer.create(items_in_fridge.this,R.raw.delete_sound);
+        final MediaPlayer delete=MediaPlayer.create(items_in_list.this,R.raw.delete_sound);
 
-        FirebaseRecyclerAdapter<Blog, items_in_fridge.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, items_in_fridge.BlogViewHolder>
-                (Blog.class,R.layout.added_items_row, items_in_fridge.BlogViewHolder.class,mDatabase )
+        FirebaseRecyclerAdapter<Blog, items_in_list.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, items_in_list.BlogViewHolder>
+                (Blog.class,R.layout.added_items_list, items_in_list.BlogViewHolder.class,mDatabase )
         {
             @Override
-            protected void populateViewHolder(items_in_fridge.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
+            protected void populateViewHolder(items_in_list.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
 
                 blogViewHolder.setTitle(blog.getTitle());
                 blogViewHolder.setQuantity(blog.getQuantity());
@@ -85,10 +86,10 @@ public class items_in_fridge extends AppCompatActivity {
                 blogViewHolder.update.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final DialogPlus dialog = DialogPlus.newDialog(items_in_fridge.this)
+                        final DialogPlus dialog = DialogPlus.newDialog(items_in_list.this)
                                 .setGravity(Gravity.CENTER)
                                 .setMargin(50,0,50,0)
-                                .setContentHolder(new ViewHolder(R.layout.content1))
+                                .setContentHolder(new ViewHolder(R.layout.content3))
                                 .setExpanded(false)
                                 .create();
                         dialog.show();
@@ -102,50 +103,11 @@ public class items_in_fridge extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
 
-                                int map= Integer.parseInt(title.getText().toString());
-
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        dialog.dismiss();
-                                    }
-                                });
-
-                                Toast.makeText(items_in_fridge.this,"Fridge Updated",Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-                    }
-                });
-                blogViewHolder.add.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        final DialogPlus dialog = DialogPlus.newDialog(items_in_fridge.this)
-                                .setGravity(Gravity.CENTER)
-                                .setMargin(50,0,50,0)
-                                .setContentHolder(new ViewHolder(R.layout.content2))
-                                .setExpanded(false)
-                                .create();
-                        dialog.show();
-
-                        View holderView = (LinearLayout)dialog.getHolderView();
-
-                        final EditText title = holderView.findViewById(R.id.quantity);
-                        Button button=holderView.findViewById(R.id.diaadd);
-
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-
-
-                                added.start();
                                 int map= Integer.parseInt(title.getText().toString());
 
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -153,7 +115,7 @@ public class items_in_fridge extends AppCompatActivity {
                                     }
                                 });
 
-                                Toast.makeText(items_in_fridge.this,"Item added to List",Toast.LENGTH_LONG).show();
+                                Toast.makeText(items_in_list.this,"Fridge Updated",Toast.LENGTH_LONG).show();
                             }
                         });
 
@@ -164,7 +126,7 @@ public class items_in_fridge extends AppCompatActivity {
                     public void onClick(View view) {
                         delete.start();
                         FirebaseDatabase.getInstance().getReference()
-                                .child(uid).child("Fridge")
+                                .child(uid).child("Shopping List")
                                 .child(getRef(i).getKey())
                                 .removeValue();
                     }
@@ -181,14 +143,12 @@ public class items_in_fridge extends AppCompatActivity {
         View mView;
         ImageView delete;
         ImageView update;
-        ImageView add;
         public BlogViewHolder(View itemView)
         {
             super(itemView);
             mView=itemView;
-             delete = mView.findViewById(R.id.delete);
+            delete = mView.findViewById(R.id.delete);
             update = mView.findViewById(R.id.update);
-            add=mView.findViewById(R.id.addlist);
         }
 
         public void setTitle(String title)
@@ -199,7 +159,7 @@ public class items_in_fridge extends AppCompatActivity {
         public void setQuantity(int quantity)
         {
             TextView added_kgs=(TextView)mView.findViewById(R.id.added_kgs);
-            added_kgs.setText(quantity+" Kgs Remaining");
+            added_kgs.setText(quantity+" Kgs");
         }
         public void setImage(Context ctx, String image)
         {

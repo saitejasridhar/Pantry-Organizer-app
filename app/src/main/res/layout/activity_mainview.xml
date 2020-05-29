@@ -65,14 +65,14 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/kitchen"
+            android:id="@+id/list"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="20dp"
             android:layout_weight="2"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:text="Kitchen" />
+            android:text="List" />
 
         <Button
             android:id="@+id/shoppinglist"

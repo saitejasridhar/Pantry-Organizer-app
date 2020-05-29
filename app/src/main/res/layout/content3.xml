@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Enter Quantity"
+        android:text="Update quantity"
         android:textSize="18dp"
         android:textColor="#FFFFFF"
         />
@@ -36,7 +36,7 @@
         android:layout_marginTop="5dp"
         android:background="#FF1A1A1A"
         android:clickable="true"
-        android:text="Add"
+        android:text="Update"
         android:textColor="#FFFFFF"
         android:textSize="18dp" />
 

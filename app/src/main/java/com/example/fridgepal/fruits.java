@@ -29,10 +29,12 @@ import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class fruits extends AppCompatActivity {
+    private ArrayList<Blog> items;
 
     private RecyclerView mBlogList;
     private DatabaseReference mDatabase;
@@ -51,6 +53,7 @@ public class fruits extends AppCompatActivity {
         setContentView(R.layout.activity_fruits);
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Fruits");
         mDatabase.keepSynced(true);
+        items=new ArrayList<>();
 
         mBlogList=(RecyclerView)findViewById(R.id.fruitsrecycleview);
         mBlogList.setHasFixedSize(true);
@@ -140,7 +143,6 @@ public class fruits extends AppCompatActivity {
 
                 }
             });
-
         }
 
         public void setTitle(String title) {

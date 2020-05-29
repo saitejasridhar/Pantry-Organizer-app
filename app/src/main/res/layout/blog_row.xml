@@ -9,7 +9,7 @@
     android:layout_height="wrap_content"
     android:layout_marginRight="5dp"
     android:layout_marginLeft="5dp"
-    android:background="#000000"
+    android:background="#DACCCC"
     >
 
 
@@ -91,13 +91,13 @@
 
 
                     <Button
-                        android:id="@+id/add"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:layout_marginLeft="200dp"
-                        android:layout_toRightOf="@+id/post_image"
-                        android:text="ADD"
-                        android:textSize="10dp" />
+                    android:id="@+id/add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="200dp"
+                    android:layout_toRightOf="@+id/post_image"
+                    android:text=""
+                    android:textSize="10dp" />
 
 
                 </RelativeLayout>

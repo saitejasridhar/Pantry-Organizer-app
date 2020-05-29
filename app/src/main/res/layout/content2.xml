@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Enter Quantity"
+        android:text="Add to List"
         android:textSize="18dp"
         android:textColor="#FFFFFF"
         />

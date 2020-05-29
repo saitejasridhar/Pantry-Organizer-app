@@ -99,15 +99,6 @@
                         android:src="@drawable/delete"
                         android:textSize="10dp"/>
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:id="@+id/addlist"
-                        android:layout_toRightOf="@+id/added_image"
-                        android:layout_marginLeft="180dp"
-                        android:layout_marginTop="50dp"
-                        android:src="@drawable/add"
-                        android:textSize="10dp"/>
 
 
                 </RelativeLayout>
