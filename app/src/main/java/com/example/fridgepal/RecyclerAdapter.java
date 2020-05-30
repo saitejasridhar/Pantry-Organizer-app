@@ -52,7 +52,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         Glide.with(mContext)
                 .load(messagesList.get(position).getImageUrl()).into(holder.imageView);
-
+        holder.addlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mContext,"Added to List",Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 
@@ -65,14 +70,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         ImageView imageView;
         TextView textView;
-//        public ImageView addlist;
+        public ImageView addlist;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView=itemView.findViewById(R.id.image);
             textView=itemView.findViewById(R.id.title);
-//            addlist=itemView.findViewById(R.id.addlist);
+            addlist=itemView.findViewById(R.id.addlist);
 
         }
 
