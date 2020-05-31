@@ -57,9 +57,6 @@ public class ShoppingList extends AppCompatActivity{
 
         myRef = FirebaseDatabase.getInstance().getReference();
 
-
-
-
         ClearAll();
 
         GetDataFromFirebase();
@@ -114,7 +111,6 @@ public class ShoppingList extends AppCompatActivity{
         });
 
      }
-
 
      private void ClearAll()
      {

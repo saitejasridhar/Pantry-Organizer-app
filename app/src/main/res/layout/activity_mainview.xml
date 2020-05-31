@@ -91,6 +91,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="2"
-            android:text="Login" />
+            android:text="Recipes" />
     </LinearLayout>
 </RelativeLayout>
