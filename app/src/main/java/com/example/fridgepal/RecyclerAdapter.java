@@ -1,7 +1,9 @@
 package com.example.fridgepal;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.RestrictionEntry;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,12 +31,13 @@ import java.util.ArrayList;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    private Context mContext;
+
+    private Activity context;
     private ArrayList<Messages> messagesList;
 
 
-    public RecyclerAdapter(Context mContext, ArrayList<Messages> messagesList) {
-        this.mContext = mContext;
+    public RecyclerAdapter(ArrayList<Messages> messagesList,Activity context) {
+        this.context = context;
         this.messagesList = messagesList;
     }
 
@@ -47,15 +50,60 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.textView.setText(messagesList.get(position).getName());
 
-        Glide.with(mContext)
-                .load(messagesList.get(position).getImageUrl()).into(holder.imageView);
+        Glide.with(context).load(messagesList.get(position).getImageUrl()).into(holder.imageView);
+
         holder.addlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext,"Added to List",Toast.LENGTH_LONG).show();
+                final DialogPlus dialog = DialogPlus.newDialog(context)
+                        .setGravity(Gravity.CENTER)
+                        .setMargin(50,0,50,0)
+                        .setContentHolder(new com.orhanobut.dialogplus.ViewHolder(R.layout.content))
+                        .setExpanded(false)
+                        .create();
+                dialog.show();
+
+                View holderView = (LinearLayout)dialog.getHolderView();
+
+                final EditText title = holderView.findViewById(R.id.quantity);
+                Button button=holderView.findViewById(R.id.diaadd);
+
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        int map= Integer.parseInt(title.getText().toString());
+
+                        FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Shopping List").child(String.valueOf(holder.getAdapterPosition())).child("title").setValue(messagesList.get(position).getName());
+                        FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Shopping List").child(String.valueOf(holder.getAdapterPosition())).child("image").setValue(messagesList.get(position).getImageUrl());
+                        FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Shopping List").child(String.valueOf(holder.getAdapterPosition())).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                        Toast.makeText(context,"Item added",Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+            }
+        });
+
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, final int position, boolean isLongClick) {
+                if(isLongClick)
+                {
+
+                }
+                else {
+                    Log.i("Fuck em all","Fuck em all");
+                }
             }
         });
 
@@ -66,11 +114,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return messagesList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener {
 
         ImageView imageView;
         TextView textView;
         public ImageView addlist;
+        private ItemClickListener itemClickListener;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,9 +128,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             textView=itemView.findViewById(R.id.title);
             addlist=itemView.findViewById(R.id.addlist);
 
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+
         }
 
+        public void setItemClickListener(ItemClickListener itemClickListener)
+        {
+            this.itemClickListener=itemClickListener;
+        }
+
+        @Override
+        public void onClick(View view) {
+            itemClickListener.onClick(view,getAdapterPosition(),false);
+
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            itemClickListener.onClick(view,getAdapterPosition(),true);
+            return true;
+        }
     }
+
 
 
 }

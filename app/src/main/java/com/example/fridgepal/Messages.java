@@ -4,13 +4,23 @@ public class Messages {
 
     String name;
     String imageUrl;
+    int quantity;
 
     public Messages() {
     }
 
-    public Messages(String name, String imageUrl) {
+    public Messages(String name, String imageUrl, int quantity) {
         this.name = name;
         this.imageUrl = imageUrl;
+        this.quantity=quantity;
+    }
+
+    public int getQuantityy() {
+        return quantity;
+    }
+
+    public void setQuantityy(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getName() {

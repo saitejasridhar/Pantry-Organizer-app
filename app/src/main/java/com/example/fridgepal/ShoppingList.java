@@ -10,41 +10,55 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.orhanobut.dialogplus.DialogPlus;
 
 import java.util.ArrayList;
 
-public class ShoppingList extends AppCompatActivity {
+public class ShoppingList extends AppCompatActivity{
     RecyclerView recyclerView;
     private DatabaseReference myRef;
     private ArrayList<Messages> messagesList;
     private RecyclerAdapter recyclerAdapter;
     SearchView searchView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
+
         recyclerView = findViewById(R.id.shoppinglistrecycleview);
         searchView=findViewById(R.id.searchView);
+        messagesList = new ArrayList<>();
 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
+
         myRef = FirebaseDatabase.getInstance().getReference();
 
-        messagesList = new ArrayList<>();
+
+
 
         ClearAll();
 
@@ -55,6 +69,7 @@ public class ShoppingList extends AppCompatActivity {
     @Override
     protected void onStart()
     {
+
         super.onStart();
         if(searchView!=null)
         {
@@ -88,8 +103,8 @@ public class ShoppingList extends AppCompatActivity {
                     messages.setName(snapshot.child("title").getValue().toString());
                     messagesList.add(messages);
                 }
-                RecyclerAdapter adapter=new RecyclerAdapter(getApplicationContext(),messagesList);
-                recyclerView.setAdapter(adapter);
+                RecyclerAdapter recyclerAdapter=new RecyclerAdapter(messagesList,ShoppingList.this);
+                recyclerView.setAdapter(recyclerAdapter);
             }
 
             @Override
@@ -124,7 +139,7 @@ public class ShoppingList extends AppCompatActivity {
                  mylist.add(object);
              }
          }
-         RecyclerAdapter adapter=new RecyclerAdapter(getApplicationContext(),mylist);
+         RecyclerAdapter adapter=new RecyclerAdapter(mylist,ShoppingList.this);
          recyclerView.setAdapter(adapter);
      }
 

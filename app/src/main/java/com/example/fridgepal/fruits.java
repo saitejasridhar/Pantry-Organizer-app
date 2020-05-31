@@ -97,7 +97,6 @@ public class fruits extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
 
-
                                 added.start();
                                 int map= Integer.parseInt(title.getText().toString());
 
@@ -157,4 +156,4 @@ public class fruits extends AppCompatActivity {
         }
 
     }
-};
+}
