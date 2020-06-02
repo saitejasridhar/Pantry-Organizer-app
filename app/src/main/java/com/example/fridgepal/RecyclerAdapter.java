@@ -8,10 +8,12 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,11 +25,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
@@ -51,7 +57,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        holder.textView.setText(messagesList.get(position).getName());
+
+        holder.relative.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade));
+
+      holder.textView.setText(messagesList.get(position).getName());
 
         Glide.with(context).load(messagesList.get(position).getImageUrl()).into(holder.imageView);
 
@@ -76,16 +85,20 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     public void onClick(View view) {
 
                         int map= Integer.parseInt(title.getText().toString());
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                        Date date = new Date();
+                        String strDate = dateFormat.format(date).toString();
 
                         FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Shopping List").child(String.valueOf(holder.getAdapterPosition())).child("title").setValue(messagesList.get(position).getName());
                         FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Shopping List").child(String.valueOf(holder.getAdapterPosition())).child("image").setValue(messagesList.get(position).getImageUrl());
+                        FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Shopping List").child(String.valueOf(holder.getAdapterPosition())).child("time").setValue(strDate);
                         FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Shopping List").child(String.valueOf(holder.getAdapterPosition())).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 dialog.dismiss();
+
                             }
                         });
-
                         Toast.makeText(context,"Item added",Toast.LENGTH_LONG).show();
                     }
                 });
@@ -119,12 +132,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         ImageView imageView;
         TextView textView;
         public ImageView addlist;
+        RelativeLayout relative;
         private ItemClickListener itemClickListener;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView=itemView.findViewById(R.id.image);
+            relative=itemView.findViewById(R.id.rel);
             textView=itemView.findViewById(R.id.title);
             addlist=itemView.findViewById(R.id.addlist);
 

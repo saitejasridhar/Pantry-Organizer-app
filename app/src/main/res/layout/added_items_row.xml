@@ -70,11 +70,24 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_toRightOf="@+id/added_image"
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/added_time"
+                        android:layout_marginTop="33dp"
+                        android:clickable="true"
+                        android:textColor="#FFFFFF"
+                        android:text="time"
+                        android:textSize="13dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/added_title"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="30dp"
                         android:text="KGS"
                         android:layout_toRightOf="@+id/added_image"
                         android:layout_marginLeft="20dp"

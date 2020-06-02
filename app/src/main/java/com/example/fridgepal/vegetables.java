@@ -10,10 +10,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,9 @@ import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,6 +57,7 @@ public class vegetables extends AppCompatActivity {
         mDatabase.keepSynced(true);
 
         mBlogList=(RecyclerView)findViewById(R.id.vegetablesrecycleview);
+
         mBlogList.setHasFixedSize(true);
         mBlogList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -69,6 +75,7 @@ public class vegetables extends AppCompatActivity {
             @Override
             public void populateViewHolder(vegetables.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
 
+                blogViewHolder.relative1.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade));
                 blogViewHolder.setTitle(blog.getTitle());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
 
@@ -94,10 +101,14 @@ public class vegetables extends AppCompatActivity {
 
 
                                 int map= Integer.parseInt(title.getText().toString());
+                                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                Date date = new Date();
+                                String strDate = dateFormat.format(date).toString();
 
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("time").setValue(strDate);
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -122,7 +133,7 @@ public class vegetables extends AppCompatActivity {
     {
         View mView;
         Button add;
-
+        RelativeLayout relative1;
 
 
         public BlogViewHolder(View itemView)
@@ -130,6 +141,7 @@ public class vegetables extends AppCompatActivity {
             super(itemView);
             mView=itemView;
 
+            relative1=itemView.findViewById(R.id.rele);
             add=(Button) mView.findViewById(R.id.add);
             add.setOnClickListener(new View.OnClickListener() {
                 @Override

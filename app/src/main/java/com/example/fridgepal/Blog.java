@@ -5,13 +5,23 @@ public class Blog {
     private String desc;
     private String image;
     private int quantity;
+    private String time;
 
-    public Blog(String title, String desc, String image,int qunatity) {
+    public Blog(String title, String desc, String image,int qunatity,String time) {
         this.title = title;
         this.desc = desc;
         this.image = image;
         this.quantity =qunatity;
+        this.time=time;
 
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public int getQuantity() {

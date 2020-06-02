@@ -82,6 +82,7 @@ public class items_in_fridge extends AppCompatActivity {
                 blogViewHolder.setTitle(blog.getTitle());
                 blogViewHolder.setQuantity(blog.getQuantity());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
+                blogViewHolder.setTime(blog.getTime());
                 blogViewHolder.update.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -182,6 +183,7 @@ public class items_in_fridge extends AppCompatActivity {
         ImageView delete;
         ImageView update;
         ImageView add;
+
         public BlogViewHolder(View itemView)
         {
             super(itemView);
@@ -196,6 +198,13 @@ public class items_in_fridge extends AppCompatActivity {
             TextView added_title=(TextView)mView.findViewById(R.id.added_title);
             added_title.setText(title);
         }
+
+        public void setTime(String time)
+        {
+            TextView added_time=(TextView)mView.findViewById(R.id.added_time);
+            added_time.setText(time);
+        }
+
         public void setQuantity(int quantity)
         {
             TextView added_kgs=(TextView)mView.findViewById(R.id.added_kgs);
