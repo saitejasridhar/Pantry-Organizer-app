@@ -3,6 +3,7 @@ package com.example.fridgepal;
 import android.app.Activity;
 import android.content.Context;
 import android.content.RestrictionEntry;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -40,6 +41,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     private Activity context;
     private ArrayList<Messages> messagesList;
+    public static int selected_item = 0;
 
 
     public RecyclerAdapter(ArrayList<Messages> messagesList,Activity context) {
@@ -58,15 +60,25 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
+//        if(position == selected_item) {
+//            holder.textView.setTextColor(Color.parseColor("#0000ff"));
+////            holder.imageView.setBackgroundResource(R.drawable.add);
+//        } else {
+//            holder.textView.setTextColor(Color.parseColor("#000000"));
+////            holder.imageView.setBackgroundResource(0);
+//        }
+
         holder.relative.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade));
 
-      holder.textView.setText(messagesList.get(position).getName());
+        holder.textView.setText(messagesList.get(position).getName());
 
         Glide.with(context).load(messagesList.get(position).getImageUrl()).into(holder.imageView);
 
         holder.addlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+               RecyclerAdapter.selected_item = position;
                 final DialogPlus dialog = DialogPlus.newDialog(context)
                         .setGravity(Gravity.CENTER)
                         .setMargin(50,0,50,0)

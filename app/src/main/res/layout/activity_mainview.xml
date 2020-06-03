@@ -48,8 +48,8 @@
         <Button
             android:id="@+id/pantry"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="225dp"
+            android:layout_marginTop="15dp"
             android:layout_weight="1"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -57,40 +57,74 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout3"
-        android:layout_marginTop="620dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/list"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="2"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="List" />
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            >
 
-        <Button
-            android:id="@+id/shoppinglist"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="2"
-            android:text="Logout" />
-        <Button
-            android:id="@+id/recipes"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="2"
-            android:text="Recipes" />
-    </LinearLayout>
+            <com.michaldrabik.tapbarmenulib.TapBarMenu
+                android:id="@+id/tapBarMenu"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="0dp"
+                app:tbm_backgroundColor="#854A4444"
+                app:tbm_menuAnchor="bottom"
+                >
+
+
+                <Button
+                    android:id="@+id/list"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:padding="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/list"
+                    />
+                <Button
+                    android:id="@+id/recipes"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:padding="10dp"
+                    android:layout_marginLeft="28dp"
+                    android:background="@drawable/recipe"
+                    />
+
+
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+
+                <Button
+                    android:id="@+id/user"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="10dp"
+                    android:layout_marginRight="42dp"
+                   android:background="@drawable/user"
+                    />
+
+                <Button
+                    android:id="@+id/shoppinglist"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/logout"
+                    />
+
+
+
+
+            </com.michaldrabik.tapbarmenulib.TapBarMenu>
+
+        </FrameLayout>
+
 </RelativeLayout>

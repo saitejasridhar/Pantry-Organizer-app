@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.michaldrabik.tapbarmenulib.TapBarMenu;
 
 public class mainview extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,6 +27,8 @@ public class mainview extends AppCompatActivity implements View.OnClickListener 
         setSupportActionBar(TbMain);
         getSupportActionBar().setTitle("Fridge Pal");
 
+        final TapBarMenu tapBarMenu=findViewById(R.id.tapBarMenu);
+
         Button button1=findViewById(R.id.freezer);
         Button button2=findViewById(R.id.fridge);
         Button button3=findViewById(R.id.pantry);
@@ -39,6 +42,14 @@ public class mainview extends AppCompatActivity implements View.OnClickListener 
         button4.setOnClickListener(this);
         button5.setOnClickListener(this);
         button6.setOnClickListener(this);
+
+        tapBarMenu.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                tapBarMenu.toggle();
+            }
+        });
+
+
     }
 
     @Override
@@ -70,6 +81,8 @@ public class mainview extends AppCompatActivity implements View.OnClickListener 
             case R.id.recipes:
                 opennext(Recipes.class);
                 break;
+
+
         }
     }
 
