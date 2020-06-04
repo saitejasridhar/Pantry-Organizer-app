@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.ybq.android.spinkit.style.Wave;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     FirebaseAuth mAuth;
     EditText editTextEmail, editTextPassword;
-    ProgressBar progressBar;
+    public ProgressBar PBar;
 
 
 
@@ -35,7 +37,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+
+        PBar = (ProgressBar)findViewById(R.id.spin_kit1);
+        Wave new_wave = new Wave();
+        PBar.setIndeterminateDrawable(new_wave);
+        PBar.setVisibility(View.INVISIBLE);
 
 
         findViewById(R.id.textViewSignup).setOnClickListener(this);
@@ -73,20 +79,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                progressBar.setVisibility(View.GONE);
+                PBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     if(mAuth.getCurrentUser().isEmailVerified()) {
                       startActivity(new Intent(getApplicationContext(),mainview.class));
                     }
                     else {
+                        PBar.setVisibility(View.GONE);
                         Toast.makeText(getApplicationContext(), "Please Verify your mail address", Toast.LENGTH_SHORT).show();
                     }
                 } else {
+                    PBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -112,7 +119,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.buttonLogin:
-                userLogin();
+                PBar.setVisibility(View.VISIBLE);
+                Handler handler=new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                    userLogin();
+                    }
+                },3000);
                 break;
             case R.id.forgot:
                 startActivity(new Intent(MainActivity.this,forgotpassword.class));

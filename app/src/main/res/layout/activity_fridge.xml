@@ -7,13 +7,20 @@
     android:background="#000"
     tools:context=".Fridge">
 
+    <include
+        android:id="@+id/toolbarf"
+        layout="@layout/toolbar1"
+        android:title="wwww"/>
+
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="125dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginBottom="136dp"
         android:alignmentMode="alignMargins"
         android:columnCount="3"
         android:columnOrderPreserved="false"
@@ -21,12 +28,12 @@
 
         <androidx.cardview.widget.CardView
 
+            android:id="@+id/fruits"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
             android:clickable="true"
-            android:id="@+id/fruits"
-            app:cardBackgroundColor="#242424"
+            app:cardBackgroundColor="#FF1A1A1A"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp">
 
@@ -40,9 +47,9 @@
 
                 <ImageView
 
-                    android:background="@drawable/fruits"
                     android:layout_width="70dp"
-                    android:layout_height="70dp" />
+                    android:layout_height="70dp"
+                    android:background="@drawable/fruits" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -58,11 +65,11 @@
 
         <androidx.cardview.widget.CardView
 
+            android:id="@+id/vegetables"
             android:layout_width="113dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
-            android:id="@+id/vegetables"
-            app:cardBackgroundColor="#242424"
+            app:cardBackgroundColor="#FF1A1A1A"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp">
 
@@ -76,16 +83,16 @@
 
                 <ImageView
 
-                    android:background="@drawable/vegetables"
                     android:layout_width="70dp"
-                    android:layout_height="70dp" />
+                    android:layout_height="70dp"
+                    android:background="@drawable/vegetables" />
 
                 <TextView
                     android:layout_width="113dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:textAlignment="center"
                     android:text="Vegetables"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="17dp" />
 
@@ -95,12 +102,12 @@
 
         <androidx.cardview.widget.CardView
 
+            android:id="@+id/dairy"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
-            app:cardBackgroundColor="#242424"
+            app:cardBackgroundColor="#FF1A1A1A"
             app:cardCornerRadius="12dp"
-            android:id="@+id/dairy"
             app:cardElevation="6dp">
 
             <LinearLayout
@@ -112,9 +119,9 @@
                 android:padding="15dp">
 
                 <ImageView
-                    android:background="@drawable/dairy"
                     android:layout_width="70dp"
-                    android:layout_height="70dp" />
+                    android:layout_height="70dp"
+                    android:background="@drawable/dairy" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -129,15 +136,14 @@
         </androidx.cardview.widget.CardView>
 
 
-
         <androidx.cardview.widget.CardView
 
+            android:id="@+id/greens"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
-            app:cardBackgroundColor="#242424"
+            app:cardBackgroundColor="#FF1A1A1A"
             app:cardCornerRadius="12dp"
-            android:id="@+id/greens"
             app:cardElevation="6dp">
 
             <LinearLayout
@@ -150,9 +156,9 @@
 
                 <ImageView
 
-                    android:background="@drawable/greens"
                     android:layout_width="70dp"
-                    android:layout_height="70dp" />
+                    android:layout_height="70dp"
+                    android:background="@drawable/greens" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -168,11 +174,11 @@
 
         <androidx.cardview.widget.CardView
 
+            android:id="@+id/beverages"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
-            app:cardBackgroundColor="#242424"
-            android:id="@+id/beverages"
+            app:cardBackgroundColor="#FF1A1A1A"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp">
 
@@ -186,16 +192,16 @@
 
                 <ImageView
 
-                    android:background="@drawable/beverages"
                     android:layout_width="70dp"
-                    android:layout_height="70dp" />
+                    android:layout_height="70dp"
+                    android:background="@drawable/beverages" />
 
                 <TextView
                     android:layout_width="113dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:textAlignment="center"
                     android:text="Beverages"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="17dp" />
 
@@ -205,11 +211,11 @@
 
         <androidx.cardview.widget.CardView
 
+            android:id="@+id/herbs"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
-            android:id="@+id/herbs"
-            app:cardBackgroundColor="#242424"
+            app:cardBackgroundColor="#FF1A1A1A"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp">
 
@@ -223,9 +229,9 @@
 
                 <ImageView
 
-                    android:background="@drawable/herbs"
                     android:layout_width="70dp"
-                    android:layout_height="70dp" />
+                    android:layout_height="70dp"
+                    android:background="@drawable/herbs" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -242,11 +248,11 @@
 
         <androidx.cardview.widget.CardView
 
+            android:id="@+id/meat"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
-            android:id="@+id/meat"
-            app:cardBackgroundColor="#242424"
+            app:cardBackgroundColor="#FF1A1A1A"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp">
 
@@ -260,9 +266,9 @@
 
                 <ImageView
 
-                    android:background="@drawable/meat"
                     android:layout_width="70dp"
-                    android:layout_height="70dp" />
+                    android:layout_height="70dp"
+                    android:background="@drawable/meat" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -278,11 +284,11 @@
 
         <androidx.cardview.widget.CardView
 
+            android:id="@+id/bakery"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
-            android:id="@+id/bakery"
-            app:cardBackgroundColor="#242424"
+            app:cardBackgroundColor="#FF1A1A1A"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp">
 
@@ -296,9 +302,9 @@
 
                 <ImageView
 
-                    android:background="@drawable/bakery"
                     android:layout_width="70dp"
-                    android:layout_height="70dp" />
+                    android:layout_height="70dp"
+                    android:background="@drawable/bakery" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -314,11 +320,11 @@
 
         <androidx.cardview.widget.CardView
 
+            android:id="@+id/sauces"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
-            android:id="@+id/sauces"
-            app:cardBackgroundColor="#242424"
+            app:cardBackgroundColor="#FF1A1A1A"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp">
 
@@ -331,9 +337,9 @@
                 android:padding="15dp">
 
                 <ImageView
-                    android:background="@drawable/sauces"
                     android:layout_width="70dp"
-                    android:layout_height="70dp" />
+                    android:layout_height="70dp"
+                    android:background="@drawable/sauces" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -349,4 +355,15 @@
 
 
     </GridLayout>
+
+    <Button
+        android:id="@+id/essen"
+        android:layout_width="376dp"
+        android:layout_height="125dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:background="#FF1A1A1A"
+        android:text="Essentials"
+        android:textSize="18dp" />
 </RelativeLayout>

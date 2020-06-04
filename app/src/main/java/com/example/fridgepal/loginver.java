@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.github.ybq.android.spinkit.style.Wave;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,7 +23,7 @@ public class loginver extends AppCompatActivity implements View.OnClickListener 
 
     FirebaseAuth mAuth;
     EditText editTextEmail, editTextPassword;
-    ProgressBar progressBar;
+    public ProgressBar PBar1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,11 @@ public class loginver extends AppCompatActivity implements View.OnClickListener 
 
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+
+        PBar1 = (ProgressBar)findViewById(R.id.spin_kit1);
+        Wave new_wave = new Wave();
+        PBar1.setIndeterminateDrawable(new_wave);
+        PBar1.setVisibility(View.INVISIBLE);
 
 
         findViewById(R.id.buttonLogin).setOnClickListener(this);
@@ -67,12 +73,12 @@ public class loginver extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
+
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                progressBar.setVisibility(View.GONE);
+                PBar1.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     if(mAuth.getCurrentUser().isEmailVerified()) {
                         finish();
@@ -102,6 +108,7 @@ public class loginver extends AppCompatActivity implements View.OnClickListener 
         switch (view.getId()) {
 
             case R.id.buttonLogin:
+                PBar1.setVisibility(View.VISIBLE);
                 userLogin();
                 break;
         }

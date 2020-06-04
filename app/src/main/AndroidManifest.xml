@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/fridge_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".items_in_list"></activity>
+        <activity android:name=".essen"></activity>
+        <activity android:name=".items_in_list" />
         <activity android:name=".sauces" />
         <activity android:name=".bakery" />
         <activity android:name=".meat" />

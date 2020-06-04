@@ -10,12 +10,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +34,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Freezer extends AppCompatActivity {
+public class essen extends AppCompatActivity {
 
     private RecyclerView mBlogList;
     private DatabaseReference mDatabase;
@@ -52,12 +50,11 @@ public class Freezer extends AppCompatActivity {
         uid=user.getUid();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_freezer);
-        mDatabase= FirebaseDatabase.getInstance().getReference().child("Freezer");
+        setContentView(R.layout.activity_essen);
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("Essentials Fridge");
         mDatabase.keepSynced(true);
 
-        mBlogList=(RecyclerView)findViewById(R.id.freezerrecycleview);
-
+        mBlogList=(RecyclerView)findViewById(R.id.essenrecycleview);
         mBlogList.setHasFixedSize(true);
         mBlogList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -68,21 +65,20 @@ public class Freezer extends AppCompatActivity {
     {
 
         super.onStart();
-        FirebaseRecyclerAdapter<Blog, Freezer.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, Freezer.BlogViewHolder>
-                (Blog.class,R.layout.blog_row, Freezer.BlogViewHolder.class,mDatabase )
+        FirebaseRecyclerAdapter<Blog, greens.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, greens.BlogViewHolder>
+                (Blog.class,R.layout.blog_row, greens.BlogViewHolder.class,mDatabase )
         {
 
             @Override
-            public void populateViewHolder(Freezer.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
+            public void populateViewHolder(greens.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
 
-                blogViewHolder.relative1.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade));
                 blogViewHolder.setTitle(blog.getTitle());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
 
                 blogViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final DialogPlus dialog = DialogPlus.newDialog(Freezer.this)
+                        final DialogPlus dialog = DialogPlus.newDialog(essen.this)
                                 .setGravity(Gravity.CENTER)
                                 .setMargin(50,0,50,0)
                                 .setContentHolder(new ViewHolder(R.layout.content))
@@ -105,18 +101,18 @@ public class Freezer extends AppCompatActivity {
                                 Date date = new Date();
                                 String strDate = dateFormat.format(date).toString();
 
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("time").setValue(strDate);
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("time").setValue(strDate);
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         dialog.dismiss();
                                     }
                                 });
 
-                                Toast.makeText(Freezer.this,"Item added",Toast.LENGTH_LONG).show();
+                                Toast.makeText(essen.this,"Item added",Toast.LENGTH_LONG).show();
                             }
                         });
 
@@ -133,7 +129,7 @@ public class Freezer extends AppCompatActivity {
     {
         View mView;
         Button add;
-        RelativeLayout relative1;
+
 
 
         public BlogViewHolder(View itemView)
@@ -141,7 +137,6 @@ public class Freezer extends AppCompatActivity {
             super(itemView);
             mView=itemView;
 
-            relative1=itemView.findViewById(R.id.rele);
             add=(Button) mView.findViewById(R.id.add);
             add.setOnClickListener(new View.OnClickListener() {
                 @Override

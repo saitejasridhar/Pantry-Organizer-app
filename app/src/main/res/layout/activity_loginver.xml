@@ -22,6 +22,17 @@
     </RelativeLayout>
 
 
+    <com.github.ybq.android.spinkit.SpinKitView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/spin_kit1"
+        android:visibility="invisible"
+        style="@style/SpinKitView.Large.Wave"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        app:SpinKit_Color="#FF9800" />
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,14 +79,6 @@
                 android:textColor="#FFFFFF" />
 
         </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/progressbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:visibility="gone" />
     </RelativeLayout>
 
 

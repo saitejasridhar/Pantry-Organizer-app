@@ -4,17 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".items_in_freezer">
+    android:background="#000000"
+    tools:context=".items_in_freezer"
+    >
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar1"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:id="@+id/itemsfreezerrecycleview">
+    </androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/addfreezer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ADD ITEMS"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/plus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.918" />
+        app:layout_constraintVertical_bias="0.937" />
 </androidx.constraintlayout.widget.ConstraintLayout>
