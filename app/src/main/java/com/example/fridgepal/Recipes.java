@@ -100,6 +100,7 @@ public class Recipes extends AppCompatActivity{
                     recipe.setImage(snapshot.child("image").getValue().toString());
                     recipe.setIng(snapshot.child("ing").getValue().toString());
                     recipe.setLink(snapshot.child("link").getValue().toString());
+                    recipe.setPro(snapshot.child("pro").getValue().toString());
                     messagesList.add(recipe);
                 }
                 RecyclerAdapter1 recyclerAdapter=new RecyclerAdapter1(messagesList,Recipes.this);

@@ -61,7 +61,7 @@
                         android:id="@+id/title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="100dp"
+                        android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
                         android:layout_toRightOf="@+id/image"
                         android:clickable="true"
@@ -72,18 +72,29 @@
 
                     <TextView
                         android:id="@+id/inc"
-                        android:layout_width="300dp"
-                        android:layout_height="300dp"
-                        android:layout_below="@+id/post_title"
-                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="100dp"
-                        android:layout_toRightOf="@+id/post_kgs" />
+                        android:textSize="12dp"/>
+
+                    <TextView
+                        android:id="@+id/pro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_below="@+id/inc"
+                        android:layout_marginTop="20dp"
+                        android:textSize="13dp"
+                        android:scrollbars = "vertical"
+                        android:textColor="#fff"/>
 
                     <Button
                         android:id="@+id/youtube"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_marginTop="550dp"
+                        android:layout_marginLeft="260dp"
+                        android:layout_marginTop="4dp"
                         android:background="@drawable/youtube" />
 
                 </RelativeLayout>

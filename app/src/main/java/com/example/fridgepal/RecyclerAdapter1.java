@@ -66,6 +66,8 @@ public class RecyclerAdapter1 extends RecyclerView.Adapter<RecyclerAdapter1.View
 
         holder.textView1.setText(messagesList.get(position).getIng());
 
+        holder.textView2.setText(messagesList.get(position).getPro());
+
 
         Glide.with(context).load(messagesList.get(position).getImage()).into(holder.imageView);
 
@@ -110,6 +112,7 @@ public class RecyclerAdapter1 extends RecyclerView.Adapter<RecyclerAdapter1.View
         ImageView imageView;
         TextView textView;
         TextView textView1;
+        TextView textView2;
         RelativeLayout relative;
 
         Button youtube;
@@ -122,6 +125,7 @@ public class RecyclerAdapter1 extends RecyclerView.Adapter<RecyclerAdapter1.View
             relative=itemView.findViewById(R.id.rel);
             textView=itemView.findViewById(R.id.title);
             textView1=itemView.findViewById(R.id.inc);
+            textView2=itemView.findViewById(R.id.pro);
             youtube=itemView.findViewById(R.id.youtube);
 
             itemView.setOnClickListener(this);
