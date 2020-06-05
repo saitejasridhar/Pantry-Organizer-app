@@ -2,7 +2,9 @@ package com.example.fridgepal;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.RestrictionEntry;
+import android.net.Uri;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -73,6 +75,16 @@ public class RecyclerAdapter1 extends RecyclerView.Adapter<RecyclerAdapter1.View
 
             }
         });
+        holder.youtube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String s=messagesList.get(position).getLink();
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setPackage("com.google.android.youtube");
+                context.startActivity(intent);
+            }
+        });
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
@@ -82,7 +94,6 @@ public class RecyclerAdapter1 extends RecyclerView.Adapter<RecyclerAdapter1.View
 
                 }
                 else {
-                    Log.i("Fuck em all","Fuck em all");
                 }
             }
         });
@@ -100,6 +111,8 @@ public class RecyclerAdapter1 extends RecyclerView.Adapter<RecyclerAdapter1.View
         TextView textView;
         TextView textView1;
         RelativeLayout relative;
+
+        Button youtube;
         private ItemClickListener itemClickListener;
 
         public ViewHolder(@NonNull View itemView) {
@@ -109,6 +122,7 @@ public class RecyclerAdapter1 extends RecyclerView.Adapter<RecyclerAdapter1.View
             relative=itemView.findViewById(R.id.rel);
             textView=itemView.findViewById(R.id.title);
             textView1=itemView.findViewById(R.id.inc);
+            youtube=itemView.findViewById(R.id.youtube);
 
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);

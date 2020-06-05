@@ -99,6 +99,7 @@ public class Recipes extends AppCompatActivity{
                     recipe.setName(snapshot.child("name").getValue().toString());
                     recipe.setImage(snapshot.child("image").getValue().toString());
                     recipe.setIng(snapshot.child("ing").getValue().toString());
+                    recipe.setLink(snapshot.child("link").getValue().toString());
                     messagesList.add(recipe);
                 }
                 RecyclerAdapter1 recyclerAdapter=new RecyclerAdapter1(messagesList,Recipes.this);
@@ -130,10 +131,8 @@ public class Recipes extends AppCompatActivity{
     {
         ArrayList<Recipe> mylist=new ArrayList<>();
 
-        Log.d("test",str);
+        str = str.replaceAll("[,;\\s]", "");
 
-//        str = str.replaceAll("[,;\\s]", "");
-//        str = str.replaceAll("\\s", "");
         for(Recipe object: messagesList)
         {
            String str1=object.getIng().replaceAll("[,;\\s]", "");

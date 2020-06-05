@@ -77,7 +77,7 @@ public class items_in_freezer extends AppCompatActivity {
                         (Blog.class,R.layout.added_items_row, items_in_freezer.BlogViewHolder.class,mDatabase )
                 {
                         @Override
-                        protected void populateViewHolder(items_in_freezer.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
+                        protected void populateViewHolder(final items_in_freezer.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
 
                                 blogViewHolder.setTitle(blog.getTitle());
                                 blogViewHolder.setQuantity(blog.getQuantity());
@@ -166,7 +166,7 @@ public class items_in_freezer extends AppCompatActivity {
                                                 delete.start();
                                                 FirebaseDatabase.getInstance().getReference()
                                                         .child(uid).child("Freezer")
-                                                        .child(getRef(i).getKey())
+                                                        .child(getRef(blogViewHolder.getAdapterPosition()).getKey())
                                                         .removeValue();
                                         }
                                 });

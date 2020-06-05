@@ -1,79 +1,96 @@
 package com.example.fridgepal;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
-import android.content.Context;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Button;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
+public class Pantry extends AppCompatActivity implements View.OnClickListener {
 
-public class Pantry extends AppCompatActivity {
 
-    private RecyclerView mBlogList;
-    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantry);
-        mDatabase= FirebaseDatabase.getInstance().getReference().child("Fruits");
-        mDatabase.keepSynced(true);
+        Toolbar  TbFridge = (Toolbar) findViewById(R.id.toolbarp);
+        setSupportActionBar(TbFridge);
+        getSupportActionBar().setTitle("Categories");
 
-        mBlogList=(RecyclerView)findViewById(R.id.pantryrecycleview);
-        mBlogList.setHasFixedSize(true);
-        mBlogList.setLayoutManager(new LinearLayoutManager(this));
+
+
+        CardView button1=findViewById(R.id.fruits1);
+        CardView button2=findViewById(R.id.vegetables1);
+        CardView button3=findViewById(R.id.dairy1);
+        CardView button4=findViewById(R.id.greens1);
+        CardView button5=findViewById(R.id.beverages1);
+        CardView button6=findViewById(R.id.herbs1);
+        CardView button7=findViewById(R.id.meat1);
+        CardView button8=findViewById(R.id.bakery1);
+        CardView button9=findViewById(R.id.sauces1);
+        Button button10=findViewById(R.id.essen1);
+
+
+        button1.setOnClickListener(this);
+        button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
+        button5.setOnClickListener(this);
+        button6.setOnClickListener(this);
+        button7.setOnClickListener(this);
+        button8.setOnClickListener(this);
+        button9.setOnClickListener(this);
+        button10.setOnClickListener(this);
+
     }
+
     @Override
-    protected void onStart()
-    {
-        super.onStart();
-        FirebaseRecyclerAdapter<Blog,BlogViewHolder>firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, BlogViewHolder>
-                (Blog.class,R.layout.blog_row,BlogViewHolder.class,mDatabase )
+    public void onClick(View view) {
+        switch (view.getId())
         {
-            @Override
-            protected void populateViewHolder(BlogViewHolder blogViewHolder, Blog blog, int i) {
-                blogViewHolder.setTitle(blog.getTitle());
-//                blogViewHolder.setDesc(blog.getDesc());
-                blogViewHolder.setImage(getApplicationContext(),blog.getImage());
+            case R.id.fruits1:
+                opennext( fruits.class);
+                break;
+            case R.id.vegetables1:
+                opennext(vegetables.class);
+                break;
+            case R.id.dairy1:
+                opennext(dairy.class);
+                break;
+            case R.id.greens1:
+                opennext(greens.class);
+                break;
+            case R.id.beverages1:
+                opennext(beverages.class);
+                break;
+            case R.id.herbs1:
+                opennext(herbs.class);
+                break;
+            case R.id.meat1:
+                opennext(meat.class);
+                break;
+            case R.id.bakery1:
+                opennext(bakery.class);
+                break;
+            case R.id.sauces1:
+                opennext(sauces.class);
+                break;
+            case R.id.essen1:
+                opennext(essen.class);
+                break;
 
-            }
-        };
-        mBlogList.setAdapter(firebaseRecyclerAdapter);
-
+        }
     }
 
-    public static class BlogViewHolder extends RecyclerView.ViewHolder
+    private void opennext( final Class<? extends Activity> ActivityToOpen)
     {
-        View mView;
-        public BlogViewHolder(View itemView)
-        {
-            super(itemView);
-            mView=itemView;
-        }
-
-        public void setTitle(String title)
-        {
-            TextView post_title=(TextView)mView.findViewById(R.id.post_title);
-            post_title.setText(title);
-        }
-//        public void setDesc(String desc)
-//        {
-//            TextView post_desc=(TextView)mView.findViewById(R.id.post_desc);
-//            post_desc.setText(desc);
-//        }
-        public void setImage(Context ctx,String image)
-        {
-            ImageView post_Image=(ImageView)mView.findViewById(R.id.post_image);
-            Picasso.get().load(image).into(post_Image);
-        }
-
+        startActivity(new Intent(getBaseContext(), ActivityToOpen));
     }
 }

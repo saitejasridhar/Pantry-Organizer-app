@@ -4,7 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".items_in_pantry">
+    android:background="#000000"
+    tools:context=".items_in_pantry"
+    >
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar1"
+        android:title="wwww"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:id="@+id/itemspantryrecycleview">
+    </androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/addpantry"

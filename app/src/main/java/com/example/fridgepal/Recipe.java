@@ -5,11 +5,14 @@ public class Recipe {
     String ing;
     String pro;
     String image;
+    String link;
 
-    public Recipe(String name, String ing, String pro,String image) {
+    public Recipe(String name, String ing, String pro,String image,String link) {
         this.name = name;
         this.ing = ing;
         this.pro = pro;
+        this.link=link;
+        this.image=image;
     }
 
     public String getImage() {
@@ -22,6 +25,14 @@ public class Recipe {
 
     public  Recipe() {
 
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public String getName() {
