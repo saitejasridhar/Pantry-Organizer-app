@@ -92,6 +92,7 @@ public class herbs extends AppCompatActivity {
 
                         final EditText title = holderView.findViewById(R.id.quantity);
                         Button button=holderView.findViewById(R.id.diaadd);
+                        final EditText unit=holderView.findViewById(R.id.unit);
 
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -103,11 +104,13 @@ public class herbs extends AppCompatActivity {
                                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                                 Date date = new Date();
                                 String strDate = dateFormat.format(date).toString();
+                                String units=unit.getText().toString();
 
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("time").setValue(strDate);
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("unit").setValue(units);
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

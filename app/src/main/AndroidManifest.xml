@@ -9,7 +9,15 @@
         android:roundIcon="@drawable/fridge_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".essen"></activity>
+        <activity android:name=".spices" />
+        <activity android:name=".snacks" />
+        <activity android:name=".root_vegetables" />
+        <activity android:name=".pickels" />
+        <activity android:name=".other" />
+        <activity android:name=".oil" />
+        <activity android:name=".dal" />
+        <activity android:name=".grains" />
+        <activity android:name=".flour" />
         <activity android:name=".items_in_list" />
         <activity android:name=".sauces" />
         <activity android:name=".bakery" />

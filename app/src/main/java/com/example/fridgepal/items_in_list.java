@@ -82,6 +82,7 @@ public class items_in_list extends AppCompatActivity {
 
                 blogViewHolder.setTitle(blog.getTitle());
                 blogViewHolder.setQuantity(blog.getQuantity());
+                blogViewHolder.setUnit(blog.getUnit());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
                 blogViewHolder.update.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -108,6 +109,7 @@ public class items_in_list extends AppCompatActivity {
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("unit").setValue(blog.getUnit());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -161,12 +163,17 @@ public class items_in_list extends AppCompatActivity {
         public void setQuantity(int quantity)
         {
             TextView added_kgs=(TextView)mView.findViewById(R.id.added_kgs);
-            added_kgs.setText(quantity+" Kgs");
+            added_kgs.setText(quantity+"");
         }
         public void setImage(Context ctx, String image)
         {
             ImageView added_image=(ImageView)mView.findViewById(R.id.added_image);
             Picasso.get().load(image).into(added_image);
+        }
+        public void setUnit(String unit)
+        {
+            TextView added_unit=(TextView)mView.findViewById(R.id.unit);
+            added_unit.setText(unit);
         }
 
     }

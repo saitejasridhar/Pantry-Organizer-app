@@ -72,6 +72,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         holder.textView.setText(messagesList.get(position).getName());
 
+
         Glide.with(context).load(messagesList.get(position).getImageUrl()).into(holder.imageView);
 
         holder.addlist.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +91,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 View holderView = (LinearLayout)dialog.getHolderView();
 
                 final EditText title = holderView.findViewById(R.id.quantity);
+                final EditText unit = holderView.findViewById(R.id.unit);
                 Button button=holderView.findViewById(R.id.diaadd);
 
                 button.setOnClickListener(new View.OnClickListener() {
@@ -100,8 +102,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
                         Date date = new Date();
                         String strDate = dateFormat.format(date).toString();
+                        String units=unit.getText().toString();
 
                         FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Shopping List").child(String.valueOf(holder.getAdapterPosition())).child("title").setValue(messagesList.get(position).getName());
+                        FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Shopping List").child(String.valueOf(holder.getAdapterPosition())).child("unit").setValue(units);
                         FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Shopping List").child(String.valueOf(holder.getAdapterPosition())).child("image").setValue(messagesList.get(position).getImageUrl());
                         FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Shopping List").child(String.valueOf(holder.getAdapterPosition())).child("time").setValue(strDate);
                         FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Shopping List").child(String.valueOf(holder.getAdapterPosition())).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {

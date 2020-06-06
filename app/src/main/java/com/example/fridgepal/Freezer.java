@@ -93,6 +93,7 @@ public class Freezer extends AppCompatActivity {
                         View holderView = (LinearLayout)dialog.getHolderView();
 
                         final EditText title = holderView.findViewById(R.id.quantity);
+                        final EditText unit=holderView.findViewById(R.id.unit);
                         Button button=holderView.findViewById(R.id.diaadd);
 
                         button.setOnClickListener(new View.OnClickListener() {
@@ -104,10 +105,12 @@ public class Freezer extends AppCompatActivity {
                                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                                 Date date = new Date();
                                 String strDate = dateFormat.format(date).toString();
+                                String units=unit.getText().toString();
 
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("unit").setValue(units);
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("time").setValue(strDate);
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override

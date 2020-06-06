@@ -18,8 +18,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginBottom="124dp"
         android:alignmentMode="alignMargins"
         android:columnCount="3"
         android:columnOrderPreserved="false"
@@ -27,7 +27,7 @@
 
         <androidx.cardview.widget.CardView
 
-            android:id="@+id/fruits1"
+            android:id="@+id/flour"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
@@ -48,13 +48,13 @@
 
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/fruits" />
+                    android:background="@drawable/flour" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Fruits"
+                    android:text="Flour"
                     android:textColor="#FFFFFF"
                     android:textSize="18dp" />
 
@@ -64,7 +64,7 @@
 
         <androidx.cardview.widget.CardView
 
-            android:id="@+id/vegetables1"
+            android:id="@+id/grains"
             android:layout_width="113dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
@@ -84,13 +84,13 @@
 
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/vegetables" />
+                    android:background="@drawable/grains" />
 
                 <TextView
                     android:layout_width="113dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Vegetables"
+                    android:text="Grains"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="17dp" />
@@ -101,7 +101,7 @@
 
         <androidx.cardview.widget.CardView
 
-            android:id="@+id/dairy1"
+            android:id="@+id/dal"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
@@ -120,13 +120,13 @@
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/dairy" />
+                    android:background="@drawable/dals" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Dairy"
+                    android:text="Dals"
                     android:textColor="#FFFFFF"
                     android:textSize="18dp" />
 
@@ -137,7 +137,7 @@
 
         <androidx.cardview.widget.CardView
 
-            android:id="@+id/greens1"
+            android:id="@+id/spices"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
@@ -157,13 +157,13 @@
 
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/greens" />
+                    android:background="@drawable/spices" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Greens"
+                    android:text="Spices"
                     android:textColor="#FFFFFF"
                     android:textSize="18dp" />
 
@@ -173,7 +173,7 @@
 
         <androidx.cardview.widget.CardView
 
-            android:id="@+id/beverages1"
+            android:id="@+id/root_vegetables"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
@@ -193,16 +193,16 @@
 
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/beverages" />
+                    android:background="@drawable/root_vegetables" />
 
                 <TextView
                     android:layout_width="113dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Beverages"
+                    android:text="Root Veggies"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
-                    android:textSize="17dp" />
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
@@ -210,7 +210,7 @@
 
         <androidx.cardview.widget.CardView
 
-            android:id="@+id/herbs1"
+            android:id="@+id/snacks"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
@@ -230,13 +230,13 @@
 
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/herbs" />
+                    android:background="@drawable/snacks" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Herbs"
+                    android:text="Snacks"
                     android:textColor="#FFFFFF"
                     android:textSize="18dp" />
 
@@ -247,7 +247,7 @@
 
         <androidx.cardview.widget.CardView
 
-            android:id="@+id/meat1"
+            android:id="@+id/oil"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
@@ -267,13 +267,13 @@
 
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/meat" />
+                    android:background="@drawable/oil" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Meat"
+                    android:text="Oil"
                     android:textColor="#FFFFFF"
                     android:textSize="18dp" />
 
@@ -283,7 +283,7 @@
 
         <androidx.cardview.widget.CardView
 
-            android:id="@+id/bakery1"
+            android:id="@+id/pickels"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
@@ -303,13 +303,13 @@
 
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/bakery" />
+                    android:background="@drawable/pickles" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Bakery"
+                    android:text="Pickels"
                     android:textColor="#FFFFFF"
                     android:textSize="18dp" />
 
@@ -319,7 +319,7 @@
 
         <androidx.cardview.widget.CardView
 
-            android:id="@+id/sauces1"
+            android:id="@+id/others"
             android:layout_width="110dp"
             android:layout_height="142dp"
             android:layout_margin="10dp"
@@ -338,13 +338,13 @@
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/sauces" />
+                    android:background="@drawable/others" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Sauces"
+                    android:text="Others"
                     android:textColor="#FFFFFF"
                     android:textSize="18dp" />
 
@@ -355,14 +355,4 @@
 
     </GridLayout>
 
-    <Button
-        android:id="@+id/essen1"
-        android:layout_width="376dp"
-        android:layout_height="125dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="22dp"
-        android:background="#FF1A1A1A"
-        android:text="Essentials"
-        android:textSize="18dp" />
 </RelativeLayout>

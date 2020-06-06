@@ -5,15 +5,27 @@ public class Messages {
     String name;
     String imageUrl;
     int quantity;
+    String unit;
 
     public Messages() {
     }
 
-    public Messages(String name, String imageUrl, int quantity) {
-        this.name = name;
-        this.imageUrl = imageUrl;
-        this.quantity=quantity;
+    public String getUnit() {
+        return unit;
     }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public Messages(String name, String imageUrl, int quantity, String unit)
+    {
+        this.name=name;
+        this.imageUrl=imageUrl;
+        this.quantity=quantity;
+        this.unit=unit;
+    }
+
 
     public int getQuantityy() {
         return quantity;

@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.RestrictionEntry;
 import android.net.Uri;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
@@ -16,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -114,6 +117,8 @@ public class RecyclerAdapter1 extends RecyclerView.Adapter<RecyclerAdapter1.View
         TextView textView1;
         TextView textView2;
         RelativeLayout relative;
+        ScrollView scrollview1;
+        ScrollView scrollview2;
 
         Button youtube;
         private ItemClickListener itemClickListener;
@@ -127,9 +132,32 @@ public class RecyclerAdapter1 extends RecyclerView.Adapter<RecyclerAdapter1.View
             textView1=itemView.findViewById(R.id.inc);
             textView2=itemView.findViewById(R.id.pro);
             youtube=itemView.findViewById(R.id.youtube);
+            scrollview1=(ScrollView)itemView.findViewById(R.id.scrollView1);
+            scrollview2=(ScrollView)itemView.findViewById(R.id.scrollView2);
 
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
+
+
+            textView1.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    view.getParent().requestDisallowInterceptTouchEvent(true);
+                    return false;
+                }
+            });
+
+            textView2.setMovementMethod(new ScrollingMovementMethod());
+
+            textView2.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    view.getParent().requestDisallowInterceptTouchEvent(true);
+                    return false;
+                }
+            });
+
+            textView2.setMovementMethod(new ScrollingMovementMethod());
 
         }
 

@@ -80,6 +80,7 @@ public class items_in_fridge extends AppCompatActivity {
             protected void populateViewHolder(final items_in_fridge.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
 
                 blogViewHolder.setTitle(blog.getTitle());
+                blogViewHolder.setUnit(blog.getUnit());
                 blogViewHolder.setQuantity(blog.getQuantity());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
                 blogViewHolder.setTime(blog.getTime());
@@ -97,7 +98,9 @@ public class items_in_fridge extends AppCompatActivity {
                         View holderView = (LinearLayout)dialog.getHolderView();
 
                         final EditText title = holderView.findViewById(R.id.quantity);
+                        final EditText unit = holderView.findViewById(R.id.unit);
                         Button button=holderView.findViewById(R.id.diaadd);
+
 
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -105,9 +108,11 @@ public class items_in_fridge extends AppCompatActivity {
 
                                 int map= Integer.parseInt(title.getText().toString());
 
+                                String units=unit.getText().toString();
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("unit").setValue(units);
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -136,6 +141,7 @@ public class items_in_fridge extends AppCompatActivity {
 
                         final EditText title = holderView.findViewById(R.id.quantity);
                         Button button=holderView.findViewById(R.id.diaadd);
+                        final EditText unit = holderView.findViewById(R.id.unit);
 
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -144,9 +150,11 @@ public class items_in_fridge extends AppCompatActivity {
 
                                 added.start();
                                 int map= Integer.parseInt(title.getText().toString());
+                                String units=unit.getText().toString();
 
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("unit").setValue(blog.getUnit());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -198,6 +206,11 @@ public class items_in_fridge extends AppCompatActivity {
             TextView added_title=(TextView)mView.findViewById(R.id.added_title);
             added_title.setText(title);
         }
+        public void setUnit(String unit)
+        {
+            TextView added_unit=(TextView)mView.findViewById(R.id.unit);
+            added_unit.setText(unit);
+        }
 
         public void setTime(String time)
         {
@@ -208,7 +221,7 @@ public class items_in_fridge extends AppCompatActivity {
         public void setQuantity(int quantity)
         {
             TextView added_kgs=(TextView)mView.findViewById(R.id.added_kgs);
-            added_kgs.setText(quantity+" Kgs Remaining");
+            added_kgs.setText(quantity+"");
         }
         public void setImage(Context ctx, String image)
         {

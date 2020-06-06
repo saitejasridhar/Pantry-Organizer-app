@@ -26,16 +26,15 @@ public class Pantry extends AppCompatActivity implements View.OnClickListener {
 
 
 
-        CardView button1=findViewById(R.id.fruits1);
-        CardView button2=findViewById(R.id.vegetables1);
-        CardView button3=findViewById(R.id.dairy1);
-        CardView button4=findViewById(R.id.greens1);
-        CardView button5=findViewById(R.id.beverages1);
-        CardView button6=findViewById(R.id.herbs1);
-        CardView button7=findViewById(R.id.meat1);
-        CardView button8=findViewById(R.id.bakery1);
-        CardView button9=findViewById(R.id.sauces1);
-        Button button10=findViewById(R.id.essen1);
+        CardView button1=findViewById(R.id.flour);
+        CardView button2=findViewById(R.id.grains);
+        CardView button3=findViewById(R.id.dal);
+        CardView button4=findViewById(R.id.spices);
+        CardView button5=findViewById(R.id.root_vegetables);
+        CardView button6=findViewById(R.id.snacks);
+        CardView button7=findViewById(R.id.oil);
+        CardView button8=findViewById(R.id.pickels);
+        CardView button9=findViewById(R.id.others);
 
 
         button1.setOnClickListener(this);
@@ -47,7 +46,6 @@ public class Pantry extends AppCompatActivity implements View.OnClickListener {
         button7.setOnClickListener(this);
         button8.setOnClickListener(this);
         button9.setOnClickListener(this);
-        button10.setOnClickListener(this);
 
     }
 
@@ -55,35 +53,32 @@ public class Pantry extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId())
         {
-            case R.id.fruits1:
-                opennext( fruits.class);
+            case R.id.flour:
+                opennext( flour.class);
                 break;
-            case R.id.vegetables1:
-                opennext(vegetables.class);
+            case R.id.grains:
+                opennext(grains.class);
                 break;
-            case R.id.dairy1:
-                opennext(dairy.class);
+            case R.id.dal:
+                opennext(dal.class);
                 break;
-            case R.id.greens1:
-                opennext(greens.class);
+            case R.id.spices:
+                opennext(spices.class);
                 break;
-            case R.id.beverages1:
-                opennext(beverages.class);
+            case R.id.root_vegetables:
+                opennext(root_vegetables.class);
                 break;
-            case R.id.herbs1:
-                opennext(herbs.class);
+            case R.id.snacks:
+                opennext(snacks.class);
                 break;
-            case R.id.meat1:
-                opennext(meat.class);
+            case R.id.oil:
+                opennext(oil.class);
                 break;
-            case R.id.bakery1:
-                opennext(bakery.class);
+            case R.id.pickels:
+                opennext(pickels.class);
                 break;
-            case R.id.sauces1:
-                opennext(sauces.class);
-                break;
-            case R.id.essen1:
-                opennext(essen.class);
+            case R.id.others:
+                opennext(other.class);
                 break;
 
         }

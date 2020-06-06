@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -30,11 +31,13 @@ import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class essen extends AppCompatActivity {
+public class root_vegetables extends AppCompatActivity {
+    private ArrayList<Blog> items;
 
     private RecyclerView mBlogList;
     private DatabaseReference mDatabase;
@@ -50,11 +53,12 @@ public class essen extends AppCompatActivity {
         uid=user.getUid();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_essen);
-        mDatabase= FirebaseDatabase.getInstance().getReference().child("Essentials Fridge");
+        setContentView(R.layout.activity_root_vegetables);
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("Root Vegetables");
         mDatabase.keepSynced(true);
+        items=new ArrayList<>();
 
-        mBlogList=(RecyclerView)findViewById(R.id.essenrecycleview);
+        mBlogList=(RecyclerView)findViewById(R.id.root_vegetablesrecycleview);
         mBlogList.setHasFixedSize(true);
         mBlogList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -65,12 +69,13 @@ public class essen extends AppCompatActivity {
     {
 
         super.onStart();
-        FirebaseRecyclerAdapter<Blog, greens.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, greens.BlogViewHolder>
-                (Blog.class,R.layout.blog_row, greens.BlogViewHolder.class,mDatabase )
+        final MediaPlayer added=MediaPlayer.create(root_vegetables.this,R.raw.added);
+        FirebaseRecyclerAdapter<Blog, root_vegetables.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, root_vegetables.BlogViewHolder>
+                (Blog.class,R.layout.blog_row, root_vegetables.BlogViewHolder.class,mDatabase )
         {
 
             @Override
-            public void populateViewHolder(greens.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
+            public void populateViewHolder(root_vegetables.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
 
                 blogViewHolder.setTitle(blog.getTitle());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
@@ -78,7 +83,7 @@ public class essen extends AppCompatActivity {
                 blogViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final DialogPlus dialog = DialogPlus.newDialog(essen.this)
+                        final DialogPlus dialog = DialogPlus.newDialog(root_vegetables.this)
                                 .setGravity(Gravity.CENTER)
                                 .setMargin(50,0,50,0)
                                 .setContentHolder(new ViewHolder(R.layout.content))
@@ -89,30 +94,33 @@ public class essen extends AppCompatActivity {
                         View holderView = (LinearLayout)dialog.getHolderView();
 
                         final EditText title = holderView.findViewById(R.id.quantity);
+                        final EditText unit=holderView.findViewById(R.id.unit);
                         Button button=holderView.findViewById(R.id.diaadd);
 
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
 
-
+                                added.start();
                                 int map= Integer.parseInt(title.getText().toString());
+                                String units=unit.getText().toString();
                                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                                 Date date = new Date();
                                 String strDate = dateFormat.format(date).toString();
 
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("time").setValue(strDate);
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("time").setValue(strDate);
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("unit").setValue(units);
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         dialog.dismiss();
                                     }
                                 });
 
-                                Toast.makeText(essen.this,"Item added",Toast.LENGTH_LONG).show();
+                                Toast.makeText(root_vegetables.this,"Item added",Toast.LENGTH_LONG).show();
                             }
                         });
 
@@ -144,7 +152,6 @@ public class essen extends AppCompatActivity {
 
                 }
             });
-
         }
 
         public void setTitle(String title) {
@@ -159,4 +166,4 @@ public class essen extends AppCompatActivity {
         }
 
     }
-};
+}

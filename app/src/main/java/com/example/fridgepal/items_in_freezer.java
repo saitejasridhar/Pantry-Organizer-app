@@ -83,6 +83,7 @@ public class items_in_freezer extends AppCompatActivity {
                                 blogViewHolder.setQuantity(blog.getQuantity());
                                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
                                 blogViewHolder.setTime(blog.getTime());
+                                blogViewHolder.setUnit(blog.getUnit());
                                 blogViewHolder.update.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
@@ -98,16 +99,19 @@ public class items_in_freezer extends AppCompatActivity {
 
                                                 final EditText title = holderView.findViewById(R.id.quantity);
                                                 Button button=holderView.findViewById(R.id.diaadd);
+                                                final EditText unit = holderView.findViewById(R.id.unit);
 
                                                 button.setOnClickListener(new View.OnClickListener() {
                                                         @Override
                                                         public void onClick(View view) {
 
                                                                 int map= Integer.parseInt(title.getText().toString());
+                                                                String units=unit.getText().toString();
 
                                                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
                                                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
                                                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
+                                                                FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("unit").setValue(units);
                                                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Freezer").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                         @Override
                                                                         public void onComplete(@NonNull Task<Void> task) {
@@ -136,6 +140,7 @@ public class items_in_freezer extends AppCompatActivity {
 
                                                 final EditText title = holderView.findViewById(R.id.quantity);
                                                 Button button=holderView.findViewById(R.id.diaadd);
+                                                final EditText unit = holderView.findViewById(R.id.unit);
 
                                                 button.setOnClickListener(new View.OnClickListener() {
                                                         @Override
@@ -144,9 +149,11 @@ public class items_in_freezer extends AppCompatActivity {
 
                                                                 added.start();
                                                                 int map= Integer.parseInt(title.getText().toString());
+                                                                String units=unit.getText().toString();
 
                                                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
                                                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
+                                                                FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("unit").setValue(units);
                                                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                         @Override
                                                                         public void onComplete(@NonNull Task<Void> task) {
@@ -199,6 +206,12 @@ public class items_in_freezer extends AppCompatActivity {
                         added_title.setText(title);
                 }
 
+                public void setUnit(String unit)
+                {
+                        TextView added_unit=(TextView)mView.findViewById(R.id.unit);
+                        added_unit.setText(unit);
+                }
+
                 public void setTime(String time)
                 {
                         TextView added_time=(TextView)mView.findViewById(R.id.added_time);
@@ -208,7 +221,7 @@ public class items_in_freezer extends AppCompatActivity {
                 public void setQuantity(int quantity)
                 {
                         TextView added_kgs=(TextView)mView.findViewById(R.id.added_kgs);
-                        added_kgs.setText(quantity+" Kgs Remaining");
+                        added_kgs.setText(quantity+"");
                 }
                 public void setImage(Context ctx, String image)
                 {

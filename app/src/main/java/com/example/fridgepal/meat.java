@@ -92,6 +92,7 @@ public class meat extends AppCompatActivity {
 
                         final EditText title = holderView.findViewById(R.id.quantity);
                         Button button=holderView.findViewById(R.id.diaadd);
+                        final EditText unit=holderView.findViewById(R.id.unit);
 
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -101,6 +102,7 @@ public class meat extends AppCompatActivity {
                                 added.start();
                                 int map= Integer.parseInt(title.getText().toString());
                                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                String units=unit.getText().toString();
                                 Date date = new Date();
                                 String strDate = dateFormat.format(date).toString();
 
@@ -108,6 +110,7 @@ public class meat extends AppCompatActivity {
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("time").setValue(strDate);
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("unit").setValue(units);
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

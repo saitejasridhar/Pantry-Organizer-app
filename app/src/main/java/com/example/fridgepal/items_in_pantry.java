@@ -98,16 +98,19 @@ public class items_in_pantry extends AppCompatActivity {
 
                         final EditText title = holderView.findViewById(R.id.quantity);
                         Button button=holderView.findViewById(R.id.diaadd);
+                        final EditText unit = holderView.findViewById(R.id.unit);
 
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
 
                                 int map= Integer.parseInt(title.getText().toString());
+                                String units=unit.getText().toString();
 
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("unit").setValue(units);
                                 FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -136,6 +139,7 @@ public class items_in_pantry extends AppCompatActivity {
 
                         final EditText title = holderView.findViewById(R.id.quantity);
                         Button button=holderView.findViewById(R.id.diaadd);
+                        final EditText unit = holderView.findViewById(R.id.unit);
 
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -144,10 +148,12 @@ public class items_in_pantry extends AppCompatActivity {
 
                                 added.start();
                                 int map= Integer.parseInt(title.getText().toString());
+                                String units=unit.getText().toString();
 
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("unit").setValue(units);
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Shopping List").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         dialog.dismiss();
@@ -170,8 +176,6 @@ public class items_in_pantry extends AppCompatActivity {
                                 .removeValue();
                     }
                 });
-
-
             }
         };
         mBlogList.setAdapter(firebaseRecyclerAdapter);
@@ -208,7 +212,7 @@ public class items_in_pantry extends AppCompatActivity {
         public void setQuantity(int quantity)
         {
             TextView added_kgs=(TextView)mView.findViewById(R.id.added_kgs);
-            added_kgs.setText(quantity+" Kgs Remaining");
+            added_kgs.setText(quantity+"");
         }
         public void setImage(Context ctx, String image)
         {

@@ -136,7 +136,7 @@ public class Recipes extends AppCompatActivity{
 
         for(Recipe object: messagesList)
         {
-           String str1=object.getIng().replaceAll("[,;\\s]", "");
+           String str1=object.getName().replaceAll("[,;\\s]", "");
             if(str1.toLowerCase().contains(str.toLowerCase()))
             {
                 mylist.add(object);

@@ -31,11 +31,13 @@ import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class bakery extends AppCompatActivity {
+public class pickels extends AppCompatActivity {
+    private ArrayList<Blog> items;
 
     private RecyclerView mBlogList;
     private DatabaseReference mDatabase;
@@ -51,11 +53,12 @@ public class bakery extends AppCompatActivity {
         uid=user.getUid();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bakery);
-        mDatabase= FirebaseDatabase.getInstance().getReference().child("Bakery");
+        setContentView(R.layout.activity_pickels);
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("Pickels");
         mDatabase.keepSynced(true);
+        items=new ArrayList<>();
 
-        mBlogList=(RecyclerView)findViewById(R.id.bakeryrecycleview);
+        mBlogList=(RecyclerView)findViewById(R.id.pickelsrecycleview);
         mBlogList.setHasFixedSize(true);
         mBlogList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -66,13 +69,13 @@ public class bakery extends AppCompatActivity {
     {
 
         super.onStart();
-        final MediaPlayer added=MediaPlayer.create(bakery.this,R.raw.added);
-        FirebaseRecyclerAdapter<Blog, bakery.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, bakery.BlogViewHolder>
-                (Blog.class,R.layout.blog_row, bakery.BlogViewHolder.class,mDatabase )
+        final MediaPlayer added=MediaPlayer.create(pickels.this,R.raw.added);
+        FirebaseRecyclerAdapter<Blog, pickels.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, pickels.BlogViewHolder>
+                (Blog.class,R.layout.blog_row, pickels.BlogViewHolder.class,mDatabase )
         {
 
             @Override
-            public void populateViewHolder(bakery.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
+            public void populateViewHolder(pickels.BlogViewHolder blogViewHolder, final Blog blog, final int i) {
 
                 blogViewHolder.setTitle(blog.getTitle());
                 blogViewHolder.setImage(getApplicationContext(),blog.getImage());
@@ -80,7 +83,7 @@ public class bakery extends AppCompatActivity {
                 blogViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final DialogPlus dialog = DialogPlus.newDialog(bakery.this)
+                        final DialogPlus dialog = DialogPlus.newDialog(pickels.this)
                                 .setGravity(Gravity.CENTER)
                                 .setMargin(50,0,50,0)
                                 .setContentHolder(new ViewHolder(R.layout.content))
@@ -98,7 +101,6 @@ public class bakery extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
 
-
                                 added.start();
                                 int map= Integer.parseInt(title.getText().toString());
                                 String units=unit.getText().toString();
@@ -106,17 +108,19 @@ public class bakery extends AppCompatActivity {
                                 Date date = new Date();
                                 String strDate = dateFormat.format(date).toString();
 
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("unit").setValue(units);                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("time").setValue(strDate);
-                                FirebaseDatabase.getInstance().getReference().child(uid).child("Fridge").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("title").setValue(blog.getTitle());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("image").setValue(blog.getImage());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("desc").setValue(blog.getDesc());
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("time").setValue(strDate);
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("unit").setValue(units);
+                                FirebaseDatabase.getInstance().getReference().child(uid).child("Pantry").child(getRef(i).getKey()).child("quantity").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         dialog.dismiss();
                                     }
                                 });
 
-                                Toast.makeText(bakery.this,"Item added",Toast.LENGTH_LONG).show();
+                                Toast.makeText(pickels.this,"Item added",Toast.LENGTH_LONG).show();
                             }
                         });
 
@@ -148,7 +152,6 @@ public class bakery extends AppCompatActivity {
 
                 }
             });
-
         }
 
         public void setTitle(String title) {
@@ -163,4 +166,4 @@ public class bakery extends AppCompatActivity {
         }
 
     }
-};
+}

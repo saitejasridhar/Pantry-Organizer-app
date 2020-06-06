@@ -80,6 +80,16 @@
                         android:layout_marginLeft="20dp"
                         android:id="@+id/added_kgs"
                         />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/added_title"
+                        android:layout_marginTop="25dp"
+                        android:text="unit"
+                        android:layout_toRightOf="@+id/added_kgs"
+                        android:layout_marginLeft="3dp"
+                        android:id="@+id/unit"
+                        />
 
                     <ImageView
                         android:layout_width="30dp"

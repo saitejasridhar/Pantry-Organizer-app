@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,7 +9,6 @@
     android:layout_marginLeft="5dp"
     android:background="#000000"
     >
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -94,6 +91,17 @@
                         android:id="@+id/added_kgs"
                         />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/added_title"
+                        android:layout_marginTop="30dp"
+                        android:text="unit"
+                        android:layout_toRightOf="@+id/added_kgs"
+                        android:layout_marginLeft="3dp"
+                        android:id="@+id/unit"
+                        />
+
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
@@ -122,12 +130,8 @@
                         android:src="@drawable/add"
                         android:textSize="10dp"/>
 
-
                 </RelativeLayout>
-
-
             </androidx.cardview.widget.CardView>
-
 
         </GridLayout>
     </LinearLayout>

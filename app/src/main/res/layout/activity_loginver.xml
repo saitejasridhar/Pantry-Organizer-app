@@ -50,7 +50,7 @@
 
             <EditText
                 android:id="@+id/editTextEmail"
-                android:layout_width="match_parent"
+                android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:hint="email"

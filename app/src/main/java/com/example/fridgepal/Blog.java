@@ -6,14 +6,24 @@ public class Blog {
     private String image;
     private int quantity;
     private String time;
+    private String unit;
 
-    public Blog(String title, String desc, String image,int qunatity,String time) {
+    public Blog(String title, String desc, String image,int quantity,String time,String unit) {
         this.title = title;
         this.desc = desc;
         this.image = image;
-        this.quantity =qunatity;
+        this.quantity =quantity;
         this.time=time;
+        this.unit=unit;
 
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public String getTime() {

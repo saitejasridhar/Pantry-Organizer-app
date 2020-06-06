@@ -35,7 +35,7 @@ public class Fridge extends AppCompatActivity implements View.OnClickListener {
                 CardView button7=findViewById(R.id.meat);
                 CardView button8=findViewById(R.id.bakery);
                 CardView button9=findViewById(R.id.sauces);
-                Button button10=findViewById(R.id.essen);
+
 
 
                 button1.setOnClickListener(this);
@@ -47,7 +47,7 @@ public class Fridge extends AppCompatActivity implements View.OnClickListener {
                 button7.setOnClickListener(this);
                 button8.setOnClickListener(this);
                 button9.setOnClickListener(this);
-                button10.setOnClickListener(this);
+
 
         }
 
@@ -82,10 +82,6 @@ public class Fridge extends AppCompatActivity implements View.OnClickListener {
                         case R.id.sauces:
                                 opennext(sauces.class);
                                 break;
-                        case R.id.essen:
-                                opennext(essen.class);
-                                break;
-
                 }
         }
 

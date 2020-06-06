@@ -19,8 +19,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginBottom="125dp"
         android:alignmentMode="alignMargins"
         android:columnCount="3"
         android:columnOrderPreserved="false"
@@ -355,15 +355,4 @@
 
 
     </GridLayout>
-
-    <Button
-        android:id="@+id/essen"
-        android:layout_width="376dp"
-        android:layout_height="125dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="22dp"
-        android:background="#FF1A1A1A"
-        android:text="Essentials"
-        android:textSize="18dp" />
 </RelativeLayout>
